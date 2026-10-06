@@ -19,13 +19,33 @@ const introSection =
 
 
 /* =========================================================
-   2. OPEN INVITATION
+   2. HIDE EVERYTHING EXCEPT COVER
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sections =
+        document.querySelectorAll(".section");
+
+    sections.forEach(function (section) {
+
+        if (section.id !== "cover") {
+            section.style.display = "none";
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   3. OPEN INVITATION
    ========================================================= */
 
 openInvitationButton.addEventListener("click", function () {
 
     /*
-       Saat tombol ditekan, musik mulai.
+       Musik mulai setelah user melakukan klik.
     */
 
     backgroundMusic.volume = 0.45;
@@ -41,8 +61,21 @@ openInvitationButton.addEventListener("click", function () {
 
 
     /*
-       Setelah tombol ditekan,
-       kita arahkan tamu ke slide berikutnya.
+       Tampilkan semua section
+    */
+
+    const sections =
+        document.querySelectorAll(".section");
+
+    sections.forEach(function (section) {
+
+        section.style.display = "";
+
+    });
+
+
+    /*
+       Scroll ke slide kedua
     */
 
     setTimeout(function () {
