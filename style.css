@@ -2247,3 +2247,46 @@ body.invitation-unlocked .petals {
             none !important;
     }
 }
+
+
+/* =========================================================
+   ENGAGEMENT OF — SLIDE 2
+========================================================= */
+
+.engagement-of {
+    margin:
+        0 auto 24px;
+
+    font-family:
+        "Baskerville",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            0.9rem,
+            3.5vw,
+            1.2rem
+        );
+
+    font-style:
+        italic;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0.14em;
+
+    color:
+        var(--brown-light);
+
+    animation:
+        textReveal
+        1s
+        ease
+        0.2s
+        both;
+}
