@@ -1,0 +1,676 @@
+/* =========================================================
+   IRENE & YOEL — ENGAGEMENT INVITATION
+   STYLE SHEET
+   ========================================================= */
+
+
+/* =========================================================
+   1. BASIC RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    background: #f4efe5;
+    color: #3e382f;
+}
+
+
+/* =========================================================
+   2. GENERAL SECTION
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   3. COVER — SLIDE 1
+   ========================================================= */
+
+.cover {
+    min-height: 100svh;
+
+    /*
+       NANTI background kamu diletakkan di sini.
+
+       File:
+       assets/background.png
+    */
+
+    background-image:
+        url("assets/background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Lapisan lembut di atas background */
+
+.cover::before {
+    content: "";
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(248, 243, 234, 0.08);
+
+    pointer-events: none;
+}
+
+
+/* Isi cover */
+
+.cover-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+    max-width: 600px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   4. SAVE THE DATE
+   ========================================================= */
+
+.save-date {
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: clamp(2rem, 8vw, 4.2rem);
+
+    font-weight: 500;
+
+    letter-spacing: 0.18em;
+
+    color: #40382e;
+
+    margin-bottom: 1.5rem;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   5. COUPLE PHOTO
+   ========================================================= */
+
+.couple-photo {
+    width: min(78vw, 360px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto 2rem;
+}
+
+
+.couple-photo img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    /*
+       Nanti foto yang sudah dihapus background-nya
+       akan terlihat menyatu dengan background website.
+    */
+
+    filter: drop-shadow(
+        0 12px 20px rgba(50, 42, 30, 0.12)
+    );
+}
+
+
+/* =========================================================
+   6. OPEN INVITATION BUTTON
+   ========================================================= */
+
+.open-button {
+    appearance: none;
+
+    border: 1px solid rgba(72, 63, 49, 0.55);
+
+    background: rgba(250, 246, 238, 0.72);
+
+    color: #40382e;
+
+    padding: 0.9rem 2.1rem;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 0.95rem;
+
+    letter-spacing: 0.18em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.5s ease,
+        color 0.5s ease,
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+
+    backdrop-filter: blur(5px);
+
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+.open-button:hover {
+    background: #40382e;
+
+    color: #f7f1e7;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(60, 50, 35, 0.14);
+}
+
+
+.open-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   7. INTRO — SLIDE 2
+   ========================================================= */
+
+.intro {
+    background:
+        linear-gradient(
+            180deg,
+            #f4efe5,
+            #e9e3d6
+        );
+
+    text-align: center;
+}
+
+
+.intro-content {
+    width: 90%;
+    max-width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Logo China */
+
+.china-logo {
+    width: min(30vw, 150px);
+
+    height: auto;
+
+    margin-bottom: 2rem;
+
+    object-fit: contain;
+}
+
+
+/* Irene & Yoel */
+
+.couple-name {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(3rem, 12vw, 6rem);
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #42392e;
+
+    letter-spacing: 0.03em;
+
+    margin-bottom: 1rem;
+}
+
+
+.event-title {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 1.1rem;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+    color: #6c7463;
+}
+
+
+/* =========================================================
+   8. DETAILS — SLIDE 3
+   ========================================================= */
+
+.details {
+    background: #f4efe5;
+
+    text-align: center;
+
+    padding: 5rem 1.5rem;
+}
+
+
+.details-content {
+    width: 90%;
+    max-width: 700px;
+}
+
+
+.details h2 {
+    font-size: 2.2rem;
+
+    font-weight: 400;
+
+    margin-bottom: 1.5rem;
+
+    color: #42392e;
+}
+
+
+.event-date {
+    font-size: 1.5rem;
+
+    letter-spacing: 0.08em;
+
+    margin-bottom: 0.4rem;
+}
+
+
+.event-time {
+    font-size: 1.15rem;
+
+    margin-bottom: 1.8rem;
+}
+
+
+.venue {
+    font-size: 1.6rem;
+
+    font-weight: 500;
+
+    margin-bottom: 0.5rem;
+}
+
+
+.address {
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+
+    color: #655d52;
+
+    margin-bottom: 2rem;
+}
+
+
+/* Google Maps */
+
+.location-button {
+    display: inline-block;
+
+    text-decoration: none;
+
+    border: 1px solid #817665;
+
+    color: #4c4439;
+
+    padding: 0.8rem 1.8rem;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.15em;
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+.location-button:hover {
+    background: #4c4439;
+
+    color: #f7f1e7;
+}
+
+
+/* Foto pada slide details */
+
+.details-photo {
+    width: min(85vw, 420px);
+
+    margin: 3rem auto 0;
+}
+
+
+.details-photo img {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   9. RSVP — SLIDE 4
+   ========================================================= */
+
+.rsvp {
+    background: #e7e5d9;
+
+    padding: 5rem 1.5rem;
+}
+
+
+.rsvp-content {
+    width: 90%;
+    max-width: 550px;
+}
+
+
+.rsvp h2 {
+    text-align: center;
+
+    font-size: 2.5rem;
+
+    font-weight: 400;
+
+    margin-bottom: 1rem;
+}
+
+
+.rsvp-content > p {
+    text-align: center;
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 2rem;
+}
+
+
+#rsvpForm {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.7rem;
+}
+
+
+#rsvpForm label {
+    font-family: Arial, sans-serif;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+    margin-top: 0.6rem;
+}
+
+
+#rsvpForm input,
+#rsvpForm select,
+#rsvpForm textarea {
+    width: 100%;
+
+    border: 1px solid rgba(65, 58, 47, 0.3);
+
+    background: rgba(255, 255, 255, 0.45);
+
+    padding: 0.9rem;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.9rem;
+
+    color: #40382e;
+
+    outline: none;
+}
+
+
+#rsvpForm textarea {
+    resize: vertical;
+}
+
+
+#rsvpForm input:focus,
+#rsvpForm select:focus,
+#rsvpForm textarea:focus {
+    border-color: #746d5d;
+}
+
+
+.submit-button {
+    margin-top: 1rem;
+
+    padding: 0.9rem;
+
+    border: none;
+
+    background: #4a453c;
+
+    color: #f8f2e8;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.15em;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   10. WISHES — SLIDE 5
+   ========================================================= */
+
+.wishes {
+    background: #f1ede3;
+
+    text-align: center;
+
+    padding: 5rem 1.5rem;
+}
+
+
+.wishes-content {
+    width: 90%;
+    max-width: 700px;
+}
+
+
+.wishes h2 {
+    font-size: 2.5rem;
+
+    font-weight: 400;
+
+    margin-bottom: 1rem;
+}
+
+
+.wishes p {
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 2rem;
+}
+
+
+#wishesList {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+
+/* =========================================================
+   11. CLOSING — SLIDE 6
+   ========================================================= */
+
+.closing {
+    background:
+        linear-gradient(
+            180deg,
+            #e9e3d6,
+            #f4efe5
+        );
+
+    text-align: center;
+
+    padding: 5rem 1.5rem;
+}
+
+
+.closing-content {
+    width: 90%;
+    max-width: 600px;
+}
+
+
+.closing h2 {
+    font-size:
+        clamp(3rem, 12vw, 6rem);
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    margin-bottom: 1rem;
+}
+
+
+.closing p {
+    font-size: 1.1rem;
+
+    letter-spacing: 0.12em;
+}
+
+
+.closing-message {
+    margin-top: 2rem;
+
+    letter-spacing: 0.05em !important;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   12. TABLET & DESKTOP
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+    .cover-content {
+        max-width: 750px;
+    }
+
+    .couple-photo {
+        width: min(45vw, 430px);
+    }
+
+    .details {
+        padding: 7rem 2rem;
+    }
+
+    .rsvp {
+        padding: 7rem 2rem;
+    }
+
+    .wishes {
+        padding: 7rem 2rem;
+    }
+
+    .closing {
+        padding: 7rem 2rem;
+    }
+}
+
+
+/* =========================================================
+   13. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
