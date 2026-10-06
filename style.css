@@ -1,38 +1,17 @@
 /* =========================================================
    IRENE & YOEL — ENGAGEMENT INVITATION
-   STYLE.CSS
+   SIMPLE & STABLE STYLE
 ========================================================= */
 
 
-/* =========================================================
-   1. ROOT / COLOR PALETTE
-========================================================= */
-
-:root {
-    --ivory: #f7f3e9;
-    --cream: #eee8d8;
-    --sage: #9ba894;
-    --celadon: #b8c4b1;
-    --soft-teal: #829d99;
-    --champagne: #c8aa72;
-    --gold-light: #ddc99b;
-    --beige: #d8cdb8;
-    --brown: #493d35;
-    --brown-soft: #6b5d51;
-    --white-soft: rgba(255, 252, 243, 0.92);
-    --glass: rgba(247, 243, 233, 0.72);
-    --shadow: rgba(56, 47, 39, 0.16);
-}
-
-
-/* =========================================================
-   2. RESET
-========================================================= */
+/* =========================
+   BASIC RESET
+========================= */
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -41,44 +20,38 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
-    background: var(--ivory);
-    color: var(--brown);
-    font-family: "Georgia", "Times New Roman", serif;
+    background: #f5f0e5;
+    color: #4b4038;
+    font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 button,
 input,
-textarea,
-select {
+select,
+textarea {
     font: inherit;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
 
-img {
-    max-width: 100%;
-    display: block;
-}
-
-
-/* =========================================================
-   3. INVITATION LOCK
-   Saat pertama dibuka hanya cover yang terlihat.
-========================================================= */
+/* =========================
+   INVITATION LOCK
+   Sebelum OPEN hanya cover
+========================= */
 
 body.invitation-locked .section:not(#cover) {
     display: none !important;
 }
 
 
-/* =========================================================
-   4. GENERAL SECTION
-========================================================= */
+/* =========================
+   GENERAL SECTION
+========================= */
 
 .section {
     position: relative;
@@ -86,17 +59,20 @@ body.invitation-locked .section:not(#cover) {
     min-height: 100vh;
     min-height: 100svh;
 
-    overflow: hidden;
-
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    padding: 70px 22px;
+    padding: 60px 20px;
+
+    overflow: hidden;
 }
 
 
-/* Background untuk SEMUA SLIDE ISI */
+/* =========================
+   CONTENT BACKGROUND
+   Semua slide setelah cover
+========================= */
 
 .intro,
 .details,
@@ -105,48 +81,36 @@ body.invitation-locked .section:not(#cover) {
 .closing {
     background-image:
         linear-gradient(
-            rgba(247, 243, 233, 0.30),
-            rgba(247, 243, 233, 0.30)
+            rgba(247, 243, 233, 0.20),
+            rgba(247, 243, 233, 0.20)
         ),
         url("assets/background.png");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
 }
 
 
-/* Lapisan lembut untuk slide isi */
+/* =========================
+   SECTION CONTENT
+========================= */
 
-.intro::before,
-.details::before,
-.rsvp::before,
-.wishes::before,
-.closing::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+.section-content {
+    position: relative;
+    z-index: 2;
 
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255, 255, 255, 0.22),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 75%,
-            rgba(183, 196, 177, 0.16),
-            transparent 35%
-        );
+    width: 100%;
+    max-width: 560px;
 
-    pointer-events: none;
+    margin: 0 auto;
+
+    text-align: center;
 }
 
 
 /* =========================================================
-   5. COVER
-   Cover memakai background BERBEDA.
+   COVER
 ========================================================= */
 
 .cover {
@@ -160,91 +124,71 @@ body.invitation-locked .section:not(#cover) {
     background-image: url("assets/cover-bg.png");
 
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
 
-    color: var(--brown);
-
-    overflow: hidden;
+    text-align: center;
 }
 
 
-/* Overlay sangat lembut */
+/* Cover overlay */
 
 .cover-overlay {
     position: absolute;
     inset: 0;
 
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(247, 243, 233, 0.12),
-            rgba(247, 243, 233, 0.08),
-            rgba(247, 243, 233, 0.24)
-        );
+    background: rgba(247, 243, 233, 0.08);
 
     pointer-events: none;
 }
 
 
-/* =========================================================
-   6. COVER CONTENT
-========================================================= */
+/* Cover content */
 
 .cover-content {
     position: relative;
     z-index: 2;
 
-    width: min(100%, 560px);
+    width: 100%;
+    max-width: 520px;
+
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    text-align: center;
-
-    padding: 30px 15px;
-
-    animation: coverContentIn 1.5s ease forwards;
 }
 
 
-/* =========================================================
-   7. SAVE THE DATE
-========================================================= */
+/* =========================
+   SAVE THE DATE
+========================= */
 
 .save-date {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 
-    font-size: 0.72rem;
-    letter-spacing: 0.36em;
-    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
 
-    color: var(--brown);
+    letter-spacing: 4px;
+
+    color: #4b4038;
 
     text-transform: uppercase;
-
-    animation: softFadeUp 1.2s ease 0.15s both;
 }
 
 
-/* =========================================================
-   8. COVER PHOTO
-========================================================= */
+/* =========================
+   COVER PHOTO
+========================= */
 
 .cover-couple-wrapper {
-    position: relative;
+    width: 100%;
+    max-width: 430px;
 
-    width: min(88vw, 470px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin: 5px auto 10px;
+    margin: 0 auto 10px;
 }
-
 
 .couple-photo {
     width: 100%;
@@ -254,97 +198,59 @@ body.invitation-locked .section:not(#cover) {
 
     filter:
         drop-shadow(
-            0 18px 25px rgba(56, 47, 39, 0.18)
+            0 12px 20px rgba(60, 50, 40, 0.15)
         );
-
-    animation:
-        coupleFloat 7s ease-in-out infinite,
-        photoReveal 1.5s ease 0.2s both;
 }
 
 
-/* =========================================================
-   9. COVER DATE
-========================================================= */
+/* =========================
+   COVER DATE
+========================= */
 
 .cover-date {
-    margin-top: 5px;
-    margin-bottom: 28px;
+    margin: 5px 0 25px;
 
-    font-size: 0.88rem;
-    letter-spacing: 0.28em;
+    font-size: 13px;
 
-    color: var(--brown-soft);
+    letter-spacing: 4px;
 
-    animation: softFadeUp 1.2s ease 0.4s both;
+    color: #65584d;
 }
 
 
-/* =========================================================
-   10. OPEN INVITATION BUTTON
-========================================================= */
+/* =========================
+   OPEN INVITATION
+========================= */
 
 .open-button {
     position: relative;
 
-    border: 1px solid rgba(111, 92, 60, 0.55);
-
-    background:
-        rgba(247, 243, 233, 0.78);
-
-    color: var(--brown);
-
-    padding: 14px 27px;
-
     min-width: 190px;
 
-    border-radius: 2px;
+    padding: 13px 25px;
+
+    border: 1px solid #9d8356;
+
+    background: rgba(250, 247, 238, 0.82);
+
+    color: #4b4038;
 
     cursor: pointer;
 
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    font-weight: 600;
+    font-size: 11px;
 
-    box-shadow:
-        0 10px 28px rgba(56, 47, 39, 0.12);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    letter-spacing: 3px;
 
     transition:
-        transform 0.35s ease,
-        background 0.35s ease,
-        box-shadow 0.35s ease,
-        letter-spacing 0.35s ease;
-
-    animation: softFadeUp 1.2s ease 0.55s both;
+        background 0.3s ease,
+        transform 0.3s ease;
 }
-
-
-.open-button::before {
-    content: "";
-
-    position: absolute;
-    inset: 4px;
-
-    border: 1px solid rgba(200, 170, 114, 0.32);
-
-    pointer-events: none;
-}
-
 
 .open-button:hover {
-    transform: translateY(-3px);
+    background: rgba(255, 252, 243, 0.98);
 
-    background: rgba(255, 252, 243, 0.94);
-
-    box-shadow:
-        0 15px 32px rgba(56, 47, 39, 0.18);
-
-    letter-spacing: 0.3em;
+    transform: translateY(-2px);
 }
-
 
 .open-button:active {
     transform: translateY(0);
@@ -352,153 +258,132 @@ body.invitation-locked .section:not(#cover) {
 
 
 /* =========================================================
-   11. SECTION CONTENT
-========================================================= */
-
-.section-content {
-    position: relative;
-    z-index: 2;
-
-    width: min(100%, 560px);
-
-    margin: 0 auto;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   12. INTRO
+   INTRO
 ========================================================= */
 
 .intro {
     text-align: center;
 }
 
+.intro-small {
+    margin-bottom: 15px;
 
-.intro-small,
-.section-label,
-.closing-small {
-    margin-bottom: 16px;
+    font-size: 11px;
 
-    font-size: 0.65rem;
-    letter-spacing: 0.34em;
+    letter-spacing: 3px;
 
-    text-transform: uppercase;
-
-    color: var(--brown-soft);
+    color: #6b5d51;
 }
 
 
 .china-logo {
-    width: min(150px, 35vw);
+    width: 120px;
     height: auto;
 
-    margin: 0 auto 24px;
+    margin: 0 auto 22px;
 
     object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 8px 15px rgba(56, 47, 39, 0.12)
-        );
-
-    animation: logoReveal 1.2s ease both;
 }
 
 
 .couple-name {
+    margin-bottom: 15px;
+
     font-family:
         "Bodoni 72",
         "Didot",
-        "Baskerville",
+        Georgia,
         "Times New Roman",
         serif;
 
-    font-size: clamp(2.8rem, 12vw, 5.2rem);
+    font-size: clamp(42px, 11vw, 72px);
 
     font-weight: 400;
-    line-height: 0.95;
 
-    letter-spacing: -0.025em;
+    line-height: 1;
 
-    color: var(--brown);
-
-    margin-bottom: 17px;
+    color: #493d35;
 }
 
 
 .event-title {
-    font-size: 0.76rem;
+    font-size: 13px;
 
-    letter-spacing: 0.3em;
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    color: var(--brown-soft);
+    color: #75685c;
 }
 
 
-/* =========================================================
-   13. GOLD LINE
-========================================================= */
+/* =========================
+   GOLD LINE
+========================= */
 
 .gold-line {
-    width: 75px;
+    width: 70px;
     height: 1px;
 
-    margin: 28px auto;
+    margin: 25px auto;
 
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            var(--champagne),
-            transparent
-        );
-
-    opacity: 0.9;
+    background: #c8aa72;
 }
 
 
 /* =========================================================
-   14. DETAILS
+   DETAILS
 ========================================================= */
 
 .details {
     text-align: center;
 }
 
-
 .details h2,
 .rsvp h2,
 .wishes h2 {
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 
     font-family:
         "Bodoni 72",
         "Didot",
-        "Baskerville",
+        Georgia,
         "Times New Roman",
         serif;
 
+    font-size: clamp(34px, 8vw, 52px);
+
     font-weight: 400;
 
-    font-size: clamp(2rem, 8vw, 3.2rem);
-
     line-height: 1.1;
+
+    color: #493d35;
 }
 
+
+.section-label {
+    margin-bottom: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #829d99;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   DETAILS PHOTO
+========================= */
 
 .details-photo-wrapper {
-    width: min(88vw, 430px);
+    width: 100%;
+    max-width: 400px;
 
-    margin: 0 auto 30px;
-
-    display: flex;
-    justify-content: center;
+    margin: 0 auto 28px;
 }
-
 
 .details-photo {
     width: 100%;
@@ -508,110 +393,98 @@ body.invitation-locked .section:not(#cover) {
 
     filter:
         drop-shadow(
-            0 15px 24px rgba(56, 47, 39, 0.16)
+            0 12px 20px rgba(60, 50, 40, 0.14)
         );
-
-    animation: coupleFloat 8s ease-in-out infinite;
 }
 
 
-/* =========================================================
-   15. DETAIL LIST
-========================================================= */
+/* =========================
+   DETAIL INFORMATION
+========================= */
 
 .detail-list {
     width: 100%;
-
     max-width: 480px;
 
-    margin: 0 auto 30px;
+    margin: 0 auto 28px;
 }
 
 
 .detail-item {
-    display: flex;
-    flex-direction: column;
-
-    gap: 7px;
-
-    padding: 17px 5px;
+    padding: 15px 5px;
 
     border-bottom:
-        1px solid rgba(73, 61, 53, 0.15);
+        1px solid rgba(73, 61, 53, 0.16);
 }
 
 
 .detail-item:first-child {
     border-top:
-        1px solid rgba(73, 61, 53, 0.15);
+        1px solid rgba(73, 61, 53, 0.16);
 }
 
 
 .detail-label {
-    font-size: 0.58rem;
+    display: block;
 
-    letter-spacing: 0.28em;
+    margin-bottom: 6px;
 
-    color: var(--soft-teal);
+    font-size: 9px;
 
-    font-weight: 700;
+    letter-spacing: 3px;
+
+    color: #829d99;
+
+    text-transform: uppercase;
 }
 
 
 .detail-value {
-    font-size: 0.92rem;
+    display: block;
 
-    line-height: 1.65;
+    font-size: 14px;
 
-    color: var(--brown);
+    line-height: 1.6;
+
+    color: #4b4038;
 }
 
 
-/* =========================================================
-   16. LOCATION BUTTON
-========================================================= */
+/* =========================
+   LOCATION BUTTON
+========================= */
 
 .location-button {
-    display: inline-flex;
+    display: inline-block;
 
-    align-items: center;
-    justify-content: center;
+    padding: 13px 24px;
 
-    min-width: 185px;
+    border: 1px solid #9d8356;
 
-    padding: 13px 25px;
+    background: rgba(247, 243, 233, 0.75);
 
-    border: 1px solid rgba(111, 92, 60, 0.48);
-
-    color: var(--brown);
-
-    background: rgba(247, 243, 233, 0.66);
+    color: #4b4038;
 
     text-decoration: none;
 
-    font-size: 0.64rem;
+    font-size: 10px;
 
-    letter-spacing: 0.22em;
+    letter-spacing: 3px;
 
     transition:
-        transform 0.3s ease,
         background 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s ease;
 }
 
-
 .location-button:hover {
-    transform: translateY(-3px);
+    background: rgba(255, 252, 243, 0.95);
 
-    background: rgba(255, 252, 243, 0.9);
-
-    box-shadow:
-        0 12px 25px rgba(56, 47, 39, 0.13);
+    transform: translateY(-2px);
 }
 
 
 /* =========================================================
-   17. RSVP / WISHES
+   RSVP & WISHES
 ========================================================= */
 
 .rsvp,
@@ -623,18 +496,18 @@ body.invitation-locked .section:not(#cover) {
 .section-description {
     max-width: 430px;
 
-    margin: -10px auto 30px;
+    margin: -5px auto 28px;
 
-    font-size: 0.9rem;
+    font-size: 14px;
 
     line-height: 1.8;
 
-    color: var(--brown-soft);
+    color: #6b5d51;
 }
 
 
 /* =========================================================
-   18. FORM
+   FORM
 ========================================================= */
 
 .invitation-form {
@@ -643,154 +516,118 @@ body.invitation-locked .section:not(#cover) {
 
     margin: 0 auto;
 
-    text-align: left;
-
-    padding: 28px 22px;
+    padding: 25px 20px;
 
     background:
-        rgba(255, 252, 243, 0.55);
+        rgba(255, 252, 243, 0.70);
 
     border:
         1px solid rgba(200, 170, 114, 0.30);
-
-    box-shadow:
-        0 18px 45px rgba(56, 47, 39, 0.08);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+
+    text-align: left;
 }
 
 
 .form-group label {
     display: block;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
-    font-size: 0.62rem;
+    font-size: 10px;
 
-    letter-spacing: 0.18em;
+    letter-spacing: 2px;
 
     text-transform: uppercase;
 
-    color: var(--brown-soft);
+    color: #6b5d51;
 }
 
 
 .form-group input,
 .form-group select,
 .form-group textarea {
+    display: block;
+
     width: 100%;
+
+    padding: 12px 13px;
 
     border:
         1px solid rgba(73, 61, 53, 0.20);
-
-    background:
-        rgba(255, 252, 243, 0.76);
-
-    color: var(--brown);
-
-    padding: 13px 14px;
 
     border-radius: 0;
 
     outline: none;
 
-    font-size: 0.88rem;
+    background: rgba(255, 252, 243, 0.85);
 
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+    color: #493d35;
+
+    font-size: 14px;
 }
 
 
 .form-group textarea {
+    min-height: 110px;
+
     resize: vertical;
-
-    min-height: 115px;
-}
-
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: rgba(73, 61, 53, 0.48);
 }
 
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color:
-        rgba(130, 157, 153, 0.85);
-
-    background:
-        rgba(255, 255, 250, 0.92);
-
-    box-shadow:
-        0 0 0 3px rgba(130, 157, 153, 0.10);
+    border-color: #829d99;
 }
 
 
 /* =========================================================
-   19. FORM BUTTON
+   FORM BUTTON
 ========================================================= */
 
 .form-button {
     width: 100%;
 
-    padding: 14px 20px;
+    padding: 13px 20px;
 
-    border: 1px solid rgba(111, 92, 60, 0.48);
+    border: none;
 
-    background:
-        var(--brown);
+    background: #493d35;
 
-    color:
-        var(--ivory);
+    color: #f7f3e9;
 
     cursor: pointer;
 
-    font-size: 0.64rem;
+    font-size: 10px;
 
-    letter-spacing: 0.24em;
+    letter-spacing: 3px;
 
     transition:
-        transform 0.3s ease,
         background 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s ease;
 }
-
 
 .form-button:hover {
+    background: #829d99;
+
     transform: translateY(-2px);
-
-    background:
-        var(--soft-teal);
-
-    box-shadow:
-        0 10px 24px rgba(56, 47, 39, 0.15);
-}
-
-
-.form-button:active {
-    transform: translateY(0);
 }
 
 
 /* =========================================================
-   20. WISHES LIST
+   WISHES LIST
 ========================================================= */
 
 .wishes-list {
     width: 100%;
     max-width: 480px;
 
-    margin: 28px auto 0;
+    margin: 25px auto 0;
 
     display: flex;
     flex-direction: column;
@@ -802,45 +639,38 @@ body.invitation-locked .section:not(#cover) {
 
 
 .wish-card {
-    padding: 17px 18px;
+    padding: 15px;
 
     background:
-        rgba(255, 252, 243, 0.62);
+        rgba(255, 252, 243, 0.72);
 
     border-left:
-        2px solid var(--champagne);
-
-    box-shadow:
-        0 8px 20px rgba(56, 47, 39, 0.07);
-
-    animation: wishAppear 0.6s ease both;
+        2px solid #c8aa72;
 }
 
 
 .wish-card strong {
     display: block;
 
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 
-    font-size: 0.8rem;
+    font-size: 13px;
 
-    letter-spacing: 0.04em;
-
-    color: var(--brown);
+    color: #493d35;
 }
 
 
 .wish-card p {
-    font-size: 0.82rem;
+    font-size: 13px;
 
     line-height: 1.7;
 
-    color: var(--brown-soft);
+    color: #6b5d51;
 }
 
 
 /* =========================================================
-   21. CLOSING
+   CLOSING
 ========================================================= */
 
 .closing {
@@ -849,36 +679,47 @@ body.invitation-locked .section:not(#cover) {
 
 
 .closing-logo {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+}
+
+
+.closing-small {
+    margin-bottom: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #6b5d51;
 }
 
 
 .closing-name {
+    margin-bottom: 16px;
+
     font-family:
         "Bodoni 72",
         "Didot",
-        "Baskerville",
+        Georgia,
         "Times New Roman",
         serif;
 
-    font-size: clamp(2.7rem, 11vw, 5rem);
+    font-size: clamp(42px, 11vw, 70px);
 
     font-weight: 400;
 
     line-height: 1;
 
-    margin-bottom: 18px;
+    color: #493d35;
 }
 
 
 .closing-date {
-    font-size: 0.78rem;
+    font-size: 13px;
 
-    letter-spacing: 0.3em;
+    letter-spacing: 4px;
 
-    color: var(--brown-soft);
-
-    margin-bottom: 10px;
+    color: #6b5d51;
 }
 
 
@@ -887,76 +728,71 @@ body.invitation-locked .section:not(#cover) {
 
     margin: 0 auto;
 
-    font-size: 0.88rem;
+    font-size: 14px;
 
     line-height: 1.8;
 
-    color: var(--brown-soft);
+    color: #6b5d51;
 }
 
 
 /* =========================================================
-   22. SCROLL REVEAL
+   SIMPLE REVEAL
 ========================================================= */
 
 .section-content {
     opacity: 0;
-    transform: translateY(25px);
+
+    transform: translateY(15px);
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
 
 .section.is-visible .section-content {
     opacity: 1;
+
     transform: translateY(0);
 }
 
 
-/* Cover harus langsung terlihat */
+/* Cover langsung terlihat */
 
 .cover .cover-content {
     opacity: 1;
+
     transform: none;
 }
 
 
 /* =========================================================
-   23. COVER EXIT
+   COVER EXIT
 ========================================================= */
 
 .cover.cover-exit {
-    animation:
-        coverExit 0.8s ease forwards;
+    animation: coverFadeOut 0.7s ease forwards;
 }
 
 
 .cover.cover-exit .cover-content {
-    animation:
-        coverContentExit 0.7s ease forwards;
+    animation: coverContentFadeOut 0.5s ease forwards;
 }
 
 
-/* =========================================================
-   24. ANIMATIONS
-========================================================= */
-
-@keyframes coverContentIn {
+@keyframes coverFadeOut {
     from {
-        opacity: 0;
-        transform: translateY(18px);
+        opacity: 1;
     }
 
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 0;
     }
 }
 
 
-@keyframes coverContentExit {
+@keyframes coverContentFadeOut {
     from {
         opacity: 1;
         transform: translateY(0);
@@ -964,122 +800,37 @@ body.invitation-locked .section:not(#cover) {
 
     to {
         opacity: 0;
-        transform: translateY(-25px);
-    }
-}
-
-
-@keyframes coverExit {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    to {
-        opacity: 0;
-        transform: scale(1.025);
-    }
-}
-
-
-@keyframes softFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-@keyframes photoReveal {
-    from {
-        opacity: 0;
-        transform: scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-
-@keyframes logoReveal {
-    from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-
-@keyframes coupleFloat {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
-}
-
-
-@keyframes wishAppear {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-15px);
     }
 }
 
 
 /* =========================================================
-   25. TABLET
+   TABLET
 ========================================================= */
 
 @media (min-width: 600px) {
 
     .section {
-        padding: 90px 40px;
+        padding: 80px 40px;
     }
-
-
-    .cover-content {
-        width: min(100%, 650px);
-    }
-
 
     .cover-couple-wrapper {
-        width: min(80vw, 520px);
+        max-width: 480px;
     }
-
-
-    .detail-item {
-        padding: 20px 12px;
-    }
-
 
     .invitation-form {
-        padding: 34px 30px;
+        padding: 30px;
+    }
+
+    .details-photo-wrapper {
+        max-width: 440px;
     }
 }
 
 
 /* =========================================================
-   26. DESKTOP
+   DESKTOP
 ========================================================= */
 
 @media (min-width: 900px) {
@@ -1088,117 +839,60 @@ body.invitation-locked .section:not(#cover) {
         padding: 100px 60px;
     }
 
-
-    .cover {
-        background-position: center center;
-    }
-
-
     .cover-couple-wrapper {
-        width: min(70vw, 580px);
+        max-width: 520px;
     }
-
 
     .section-content {
-        width: min(100%, 650px);
+        max-width: 650px;
     }
-
 
     .details-photo-wrapper {
-        width: min(70vw, 480px);
+        max-width: 470px;
     }
-
-
-    .detail-list {
-        max-width: 550px;
-    }
-
 
     .invitation-form {
-        max-width: 550px;
+        max-width: 520px;
     }
-
 
     .wishes-list {
-        max-width: 550px;
+        max-width: 520px;
     }
 }
 
 
 /* =========================================================
-   27. LARGE DESKTOP
-========================================================= */
-
-@media (min-width: 1200px) {
-
-    .cover-couple-wrapper {
-        width: 600px;
-    }
-
-
-    .cover-content {
-        transform: translateY(-10px);
-    }
-
-
-    .couple-name {
-        font-size: 5.5rem;
-    }
-}
-
-
-/* =========================================================
-   28. MOBILE HEIGHT ADJUSTMENT
+   SMALL MOBILE SCREEN
 ========================================================= */
 
 @media (max-height: 700px) and (max-width: 599px) {
+
+    .section {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
 
     .cover {
         padding-top: 20px;
         padding-bottom: 20px;
     }
 
-
     .cover-couple-wrapper {
-        width: min(82vw, 350px);
+        max-width: 330px;
     }
-
 
     .save-date {
         margin-bottom: 10px;
     }
 
-
     .cover-date {
         margin-bottom: 18px;
     }
-
-
-    .open-button {
-        padding: 12px 22px;
-    }
 }
 
 
 /* =========================================================
-   29. ACCESSIBILITY
-========================================================= */
-
-.open-button:focus-visible,
-.location-button:focus-visible,
-.form-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline:
-        2px solid var(--soft-teal);
-
-    outline-offset: 3px;
-}
-
-
-/* =========================================================
-   30. REDUCED MOTION
+   REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1207,12 +901,10 @@ textarea:focus-visible {
         scroll-behavior: auto;
     }
 
-
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation: none !important;
+        transition: none !important;
     }
 }
