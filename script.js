@@ -1,469 +1,147 @@
 /* =========================================================
    IRENE & YOEL — ENGAGEMENT INVITATION
    SCRIPT.JS
-   ========================================================= */
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const openInvitationButton =
+        document.getElementById("openInvitationButton");
+
+    const backgroundMusic =
+        document.getElementById("backgroundMusic");
+
+    const cover =
+        document.getElementById("cover");
+
+    const introSection =
+        document.getElementById("intro");
+
+    const wishesForm =
+        document.getElementById("wishesForm");
+
+    const wishesList =
+        document.getElementById("wishesList");
 
 
-/* =========================
-   1. GET ELEMENTS
-   ========================= */
-
-const openInvitationButton =
-    document.getElementById("openInvitation");
-
-const backgroundMusic =
-    document.getElementById("backgroundMusic");
-
-const cover =
-    document.getElementById("cover");
-
-const introSection =
-    document.getElementById("intro");
-
-const wishesForm =
-    document.getElementById("wishesForm");
-
-const wishesList =
-    document.getElementById("wishesList");
-
-
-/* =========================
-   2. INITIAL STATE
-   ========================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    /*
-       Saat website pertama kali dibuka,
-       hanya COVER yang boleh terlihat.
-    */
+    /* =====================================================
+       INITIAL STATE
+    ===================================================== */
 
     document.body.classList.add("invitation-locked");
 
-});
+
+    /* =====================================================
+       OPEN INVITATION
+    ===================================================== */
+
+    if (openInvitationButton) {
+
+        openInvitationButton.addEventListener("click", async () => {
+
+            /* Prevent double click */
+            openInvitationButton.disabled = true;
+
+            openInvitationButton.style.pointerEvents = "none";
 
 
-/* =========================
-   3. OPEN INVITATION
-   ========================= */
+            /* ---------------------------------------------
+               START MUSIC
+            --------------------------------------------- */
 
-if (openInvitationButton) {
+            if (backgroundMusic) {
 
-    openInvitationButton.addEventListener("click", function () {
+                try {
 
-        /*
-           Mencegah tombol diklik berkali-kali
-           saat animasi sedang berjalan.
-        */
+                    backgroundMusic.volume = 0.45;
 
-        openInvitationButton.disabled = true;
+                    await backgroundMusic.play();
 
-
-        /* =========================
-           PLAY MUSIC
-           ========================= */
-
-        if (backgroundMusic) {
-
-            backgroundMusic.volume = 0.45;
-
-            const playMusic =
-                backgroundMusic.play();
-
-            if (playMusic !== undefined) {
-
-                playMusic.catch(function (error) {
+                } catch (error) {
 
                     console.log(
-                        "Music could not start:",
+                        "Music could not autoplay:",
                         error
                     );
 
-                });
-
-            }
-
-        }
-
-
-        /* =========================
-           COVER EXIT ANIMATION
-           ========================= */
-
-        if (cover) {
-
-            cover.classList.add("cover-exit");
-
-        }
-
-
-        /*
-           Tunggu sebentar supaya
-           animasi cover terasa halus.
-        */
-
-        setTimeout(function () {
-
-            /*
-               Buka seluruh isi undangan.
-            */
-
-            document.body.classList.remove(
-                "invitation-locked"
-            );
-
-            document.body.classList.add(
-                "invitation-unlocked"
-            );
-
-
-            /*
-               Scroll ke slide berikutnya.
-            */
-
-            setTimeout(function () {
-
-                if (introSection) {
-
-                    introSection.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
                 }
 
-            }, 150);
-
-        }, 650);
-
-    });
-
-}
-
-
-/* =========================
-   4. WISHES FORM
-   ========================= */
-
-/*
-   Untuk sementara wishes disimpan
-   di browser menggunakan localStorage.
-
-   NANTI akan kita sambungkan ke
-   Google Sheets menggunakan Google
-   Apps Script.
-*/
-
-if (wishesForm) {
-
-    wishesForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            /* =========================
-               GET FORM DATA
-               ========================= */
-
-            const nameInput =
-                document.getElementById(
-                    "wishName"
-                );
-
-            const messageInput =
-                document.getElementById(
-                    "wishMessage"
-                );
-
-
-            if (!nameInput || !messageInput) {
-
-                return;
-
             }
 
 
-            const name =
-                nameInput.value.trim();
+            /* ---------------------------------------------
+               COVER EXIT ANIMATION
+            --------------------------------------------- */
 
-            const message =
-                messageInput.value.trim();
+            if (cover) {
+                cover.classList.add("cover-exit");
+            }
 
 
-            /*
-               Jangan kirim jika kosong.
-            */
+            /* ---------------------------------------------
+               SHOW INVITATION
+            --------------------------------------------- */
 
-            if (!name || !message) {
+            setTimeout(() => {
 
-                alert(
-                    "Silakan isi nama dan ucapan terlebih dahulu."
+                document.body.classList.remove(
+                    "invitation-locked"
                 );
 
-                return;
+                document.body.classList.add(
+                    "invitation-unlocked"
+                );
 
-            }
 
+                /* Scroll to first content section */
 
-            /* =========================
-               CREATE WISH OBJECT
-               ========================= */
+                setTimeout(() => {
 
-            const newWish = {
+                    if (introSection) {
 
-                name: name,
-
-                message: message,
-
-                date:
-                    new Date().toISOString()
-
-            };
-
-
-            /* =========================
-               GET OLD WISHES
-               ========================= */
-
-            let wishes = [];
-
-            try {
-
-                wishes =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "ireneYoelWishes"
-                        )
-                    ) || [];
-
-            } catch (error) {
-
-                wishes = [];
-
-            }
-
-
-            /* =========================
-               ADD NEW WISH
-               ========================= */
-
-            wishes.unshift(newWish);
-
-
-            /* =========================
-               SAVE WISHES
-               ========================= */
-
-            localStorage.setItem(
-                "ireneYoelWishes",
-                JSON.stringify(wishes)
-            );
-
-
-            /* =========================
-               DISPLAY WISHES
-               ========================= */
-
-            displayWishes();
-
-
-            /* =========================
-               RESET FORM
-               ========================= */
-
-            wishesForm.reset();
-
-
-            /*
-               Beri feedback sederhana.
-            */
-
-            alert(
-                "Terima kasih untuk ucapan dan doanya ❤️"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================
-   5. DISPLAY WISHES
-   ========================= */
-
-function displayWishes() {
-
-    if (!wishesList) {
-
-        return;
-
-    }
-
-
-    let wishes = [];
-
-    try {
-
-        wishes =
-            JSON.parse(
-                localStorage.getItem(
-                    "ireneYoelWishes"
-                )
-            ) || [];
-
-    } catch (error) {
-
-        wishes = [];
-
-    }
-
-
-    /*
-       Bersihkan isi lama.
-    */
-
-    wishesList.innerHTML = "";
-
-
-    /*
-       Jika belum ada ucapan.
-    */
-
-    if (wishes.length === 0) {
-
-        const emptyMessage =
-            document.createElement("p");
-
-        emptyMessage.textContent =
-            "Jadilah yang pertama memberikan ucapan untuk Irene & Yoel ❤️";
-
-        emptyMessage.style.textAlign =
-            "center";
-
-        emptyMessage.style.color =
-            "#81786b";
-
-        emptyMessage.style.fontSize =
-            "13px";
-
-        emptyMessage.style.lineHeight =
-            "1.7";
-
-        wishesList.appendChild(
-            emptyMessage
-        );
-
-        return;
-
-    }
-
-
-    /* =========================
-       CREATE WISH CARDS
-       ========================= */
-
-    wishes.forEach(function (wish) {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "wish-card";
-
-
-        const name =
-            document.createElement("div");
-
-        name.className =
-            "wish-card-name";
-
-        name.textContent =
-            wish.name;
-
-
-        const message =
-            document.createElement("div");
-
-        message.className =
-            "wish-card-message";
-
-        message.textContent =
-            wish.message;
-
-
-        card.appendChild(name);
-
-        card.appendChild(message);
-
-        wishesList.appendChild(card);
-
-    });
-
-}
-
-
-/* =========================
-   6. LOAD EXISTING WISHES
-   ========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        displayWishes();
-
-    }
-);
-
-
-/* =========================
-   7. INTERSECTION ANIMATION
-   ========================= */
-
-/*
-   Membuat elemen terasa muncul
-   secara perlahan ketika user
-   scroll ke bagian tersebut.
-*/
-
-const animatedElements =
-    document.querySelectorAll(
-        ".intro-content, " +
-        ".details-content, " +
-        ".rsvp-content, " +
-        ".wishes-content, " +
-        ".closing-content"
-    );
-
-
-if ("IntersectionObserver" in window) {
-
-    const observer =
-        new IntersectionObserver(
-            function (entries) {
-
-                entries.forEach(
-                    function (entry) {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "is-visible"
-                            );
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
+                        introSection.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
 
                     }
-                );
+
+                }, 100);
+
+            }, 700);
+
+        });
+
+    }
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const sections =
+        document.querySelectorAll(".section:not(#cover)");
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "is-visible"
+                        );
+
+                    }
+
+                });
 
             },
             {
@@ -472,40 +150,271 @@ if ("IntersectionObserver" in window) {
         );
 
 
-    animatedElements.forEach(
-        function (element) {
+    sections.forEach((section) => {
 
-            observer.observe(element);
+        revealObserver.observe(section);
 
-        }
-    );
-
-}
+    });
 
 
-/* =========================
-   8. MUSIC CONTROL
-   ========================= */
+    /* =====================================================
+       WISHES — LOCAL STORAGE
+       
+       Untuk sementara wishes disimpan di browser.
+       Nanti kita ganti ke Google Sheets.
+    ===================================================== */
 
-/*
-   Kalau user kembali ke halaman
-   setelah sebelumnya membuka invitation,
-   browser tetap mengikuti aturan autoplay.
-*/
+    const WISHES_STORAGE_KEY =
+        "ireneYoelWishes";
 
-document.addEventListener(
-    "visibilitychange",
-    function () {
 
-        if (
-            document.hidden &&
-            backgroundMusic &&
-            !backgroundMusic.paused
-        ) {
+    function getWishes() {
 
-            backgroundMusic.pause();
+        try {
+
+            const savedWishes =
+                localStorage.getItem(
+                    WISHES_STORAGE_KEY
+                );
+
+            return savedWishes
+                ? JSON.parse(savedWishes)
+                : [];
+
+        } catch (error) {
+
+            console.error(
+                "Failed to read wishes:",
+                error
+            );
+
+            return [];
 
         }
 
     }
-);
+
+
+    function saveWishes(wishes) {
+
+        try {
+
+            localStorage.setItem(
+                WISHES_STORAGE_KEY,
+                JSON.stringify(wishes)
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Failed to save wishes:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       DISPLAY WISHES
+    ===================================================== */
+
+    function displayWishes() {
+
+        if (!wishesList) {
+            return;
+        }
+
+
+        const wishes =
+            getWishes();
+
+
+        wishesList.innerHTML = "";
+
+
+        if (wishes.length === 0) {
+
+            return;
+
+        }
+
+
+        wishes
+            .slice()
+            .reverse()
+            .forEach((wish) => {
+
+                const wishCard =
+                    document.createElement("div");
+
+                wishCard.className =
+                    "wish-card";
+
+
+                const name =
+                    document.createElement("strong");
+
+                name.textContent =
+                    wish.name;
+
+
+                const message =
+                    document.createElement("p");
+
+                message.textContent =
+                    wish.message;
+
+
+                wishCard.appendChild(name);
+                wishCard.appendChild(message);
+
+                wishesList.appendChild(wishCard);
+
+            });
+
+    }
+
+
+    /* =====================================================
+       WISHES FORM
+    ===================================================== */
+
+    if (wishesForm) {
+
+        wishesForm.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+
+                const nameInput =
+                    document.getElementById(
+                        "wishName"
+                    );
+
+
+                const messageInput =
+                    document.getElementById(
+                        "wishMessage"
+                    );
+
+
+                if (!nameInput || !messageInput) {
+                    return;
+                }
+
+
+                const name =
+                    nameInput.value.trim();
+
+
+                const message =
+                    messageInput.value.trim();
+
+
+                if (!name || !message) {
+
+                    return;
+
+                }
+
+
+                const newWish = {
+
+                    name: name,
+
+                    message: message,
+
+                    date:
+                        new Date().toISOString()
+
+                };
+
+
+                const wishes =
+                    getWishes();
+
+
+                wishes.push(newWish);
+
+
+                saveWishes(wishes);
+
+
+                displayWishes();
+
+
+                wishesForm.reset();
+
+
+                /* -----------------------------------------
+                   Small success feedback
+                ----------------------------------------- */
+
+                const button =
+                    wishesForm.querySelector(
+                        "button[type='submit']"
+                    );
+
+
+                if (button) {
+
+                    const originalText =
+                        button.textContent;
+
+
+                    button.textContent =
+                        "WISH SENT ✓";
+
+
+                    setTimeout(() => {
+
+                        button.textContent =
+                            originalText;
+
+                    }, 2200);
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       LOAD EXISTING WISHES
+    ===================================================== */
+
+    displayWishes();
+
+
+    /* =====================================================
+       PAUSE MUSIC WHEN TAB IS HIDDEN
+    ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (!backgroundMusic) {
+                return;
+            }
+
+
+            if (
+                document.visibilityState ===
+                "hidden"
+            ) {
+
+                backgroundMusic.pause();
+
+            }
+
+        }
+    );
+
+});
