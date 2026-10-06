@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>The Engagement of Irene & Yoel</title>
+    <title>Irene & Yoel — Engagement</title>
 
     <meta
         name="description"
@@ -16,10 +19,51 @@
 
 <body class="invitation-locked">
 
-    <!-- =========================
-         COVER
-    ========================== -->
-    <section class="section cover" id="cover">
+    <!-- ==================================================
+         FLOATING PEONY PETALS
+         Dibuat dengan CSS, tidak membutuhkan gambar/video
+    =================================================== -->
+
+    <div
+        class="petals"
+        aria-hidden="true"
+    >
+
+        <span class="petal petal-1"></span>
+        <span class="petal petal-2"></span>
+        <span class="petal petal-3"></span>
+        <span class="petal petal-4"></span>
+        <span class="petal petal-5"></span>
+        <span class="petal petal-6"></span>
+        <span class="petal petal-7"></span>
+        <span class="petal petal-8"></span>
+
+    </div>
+
+
+    <!-- ==================================================
+         MUSIC CONTROL
+    =================================================== -->
+
+    <button
+        id="musicToggle"
+        class="music-toggle"
+        type="button"
+        aria-label="Toggle music"
+        aria-pressed="true"
+    >
+        <span class="music-icon">♫</span>
+    </button>
+
+
+    <!-- ==================================================
+         COVER / SLIDE 1
+    =================================================== -->
+
+    <section
+        class="section cover"
+        id="cover"
+    >
 
         <div class="cover-overlay"></div>
 
@@ -29,21 +73,26 @@
                 SAVE THE DATE
             </p>
 
+
             <div class="cover-couple-wrapper">
+
                 <img
                     src="assets/irene-yoel.png"
                     alt="Irene and Yoel"
                     class="couple-photo"
                 >
+
             </div>
+
 
             <p class="cover-date">
                 31.10.2026
             </p>
 
+
             <button
-                class="open-button"
                 id="openInvitationButton"
+                class="open-button"
                 type="button"
             >
                 OPEN INVITATION
@@ -54,30 +103,40 @@
     </section>
 
 
-    <!-- =========================
-         INTRO
-    ========================== -->
-    <section class="section intro" id="intro">
+    <!-- ==================================================
+         SLIDE 2 — NAMES
+    =================================================== -->
+
+    <section
+        class="section intro"
+        id="intro"
+    >
 
         <div class="section-content">
 
             <img
                 src="assets/logo-china.png"
-                alt="Chinese Engagement Logo"
-                class="china-logo"
+                alt="Chinese engagement logo"
+                class="china-logo intro-logo"
             >
 
-            <p class="intro-small">
-                THE ENGAGEMENT OF
-            </p>
 
-            <h1 class="couple-name">
-                Irene &amp; Yoel
-            </h1>
+            <div class="names">
 
-            <p class="event-title">
-                Engagement Party
-            </p>
+                <div class="name name-irene">
+                    Irene
+                </div>
+
+                <div class="name-ampersand">
+                    &amp;
+                </div>
+
+                <div class="name name-yoel">
+                    Yoel
+                </div>
+
+            </div>
+
 
             <div class="gold-line"></div>
 
@@ -86,43 +145,52 @@
     </section>
 
 
-    <!-- =========================
-         DETAILS
-    ========================== -->
-    <section class="section details" id="details">
+    <!-- ==================================================
+         SLIDE 3 — ENGAGEMENT DETAILS
+    =================================================== -->
+
+    <section
+        class="section details"
+        id="details"
+    >
 
         <div class="section-content">
 
-            <p class="section-label">
-                JOIN US
-            </p>
 
             <h2>
                 Our Engagement
             </h2>
 
+
             <div class="details-photo-wrapper">
+
                 <img
                     src="assets/irene-yoel.png"
                     alt="Irene and Yoel"
                     class="details-photo"
                 >
+
             </div>
+
 
             <div class="detail-list">
 
+
                 <div class="detail-item">
+
                     <span class="detail-label">
                         DATE
                     </span>
 
                     <span class="detail-value">
-                        Saturday, 31 October 2026
+                        31 October 2026
                     </span>
+
                 </div>
 
 
                 <div class="detail-item">
+
                     <span class="detail-label">
                         TIME
                     </span>
@@ -130,10 +198,12 @@
                     <span class="detail-value">
                         11.30 AM
                     </span>
+
                 </div>
 
 
                 <div class="detail-item">
+
                     <span class="detail-label">
                         VENUE
                     </span>
@@ -141,10 +211,12 @@
                     <span class="detail-value">
                         Arunaya Resto
                     </span>
+
                 </div>
 
 
                 <div class="detail-item">
+
                     <span class="detail-label">
                         ADDRESS
                     </span>
@@ -154,7 +226,9 @@
                         Darmo, Kec. Wonokromo,
                         Surabaya
                     </span>
+
                 </div>
+
 
             </div>
 
@@ -173,20 +247,27 @@
     </section>
 
 
-    <!-- =========================
-         RSVP
-    ========================== -->
-    <section class="section rsvp" id="rsvp">
+    <!-- ==================================================
+         SLIDE 4 — RSVP
+    =================================================== -->
+
+    <section
+        class="section rsvp"
+        id="rsvp"
+    >
 
         <div class="section-content">
+
 
             <p class="section-label">
                 RSVP
             </p>
 
+
             <h2>
                 Will You Join Us?
             </h2>
+
 
             <p class="section-description">
                 We would be delighted to celebrate
@@ -194,7 +275,11 @@
             </p>
 
 
-            <form id="rsvpForm" class="invitation-form">
+            <form
+                id="rsvpForm"
+                class="invitation-form"
+            >
+
 
                 <div class="form-group">
 
@@ -224,6 +309,7 @@
                         name="attendance"
                         required
                     >
+
                         <option value="">
                             Please select
                         </option>
@@ -235,6 +321,7 @@
                         <option value="Not Attending">
                             Unable to attend
                         </option>
+
                     </select>
 
                 </div>
@@ -251,6 +338,7 @@
                         name="guests"
                         required
                     >
+
                         <option value="">
                             Select number
                         </option>
@@ -270,23 +358,8 @@
                         <option value="4">
                             4 Guests
                         </option>
+
                     </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="rsvpMessage">
-                        Message
-                    </label>
-
-                    <textarea
-                        id="rsvpMessage"
-                        name="message"
-                        rows="4"
-                        placeholder="Leave a message for Irene & Yoel..."
-                    ></textarea>
 
                 </div>
 
@@ -298,6 +371,7 @@
                     SEND RSVP
                 </button>
 
+
             </form>
 
         </div>
@@ -305,20 +379,27 @@
     </section>
 
 
-    <!-- =========================
-         WISHES
-    ========================== -->
-    <section class="section wishes" id="wishes">
+    <!-- ==================================================
+         SLIDE 5 — WISHES
+    =================================================== -->
+
+    <section
+        class="section wishes"
+        id="wishes"
+    >
 
         <div class="section-content">
+
 
             <p class="section-label">
                 WISHES
             </p>
 
+
             <h2>
                 Leave Your Wishes
             </h2>
+
 
             <p class="section-description">
                 Your prayers, love, and warm wishes
@@ -330,6 +411,7 @@
                 id="wishesForm"
                 class="invitation-form"
             >
+
 
                 <div class="form-group">
 
@@ -372,60 +454,85 @@
                     SEND WISHES
                 </button>
 
+
             </form>
 
 
-            <!-- Wishes will appear here -->
             <div
                 id="wishesList"
                 class="wishes-list"
             ></div>
+
 
         </div>
 
     </section>
 
 
-    <!-- =========================
-         CLOSING
-    ========================== -->
-    <section class="section closing" id="closing">
+    <!-- ==================================================
+         SLIDE 6 — CLOSING
+    =================================================== -->
+
+    <section
+        class="section closing"
+        id="closing"
+    >
 
         <div class="section-content">
 
+
             <img
                 src="assets/logo-china.png"
-                alt="Chinese Engagement Logo"
+                alt="Chinese engagement logo"
                 class="china-logo closing-logo"
             >
+
 
             <p class="closing-small">
                 WITH LOVE,
             </p>
 
-            <h2 class="closing-name">
-                Irene &amp; Yoel
-            </h2>
+
+            <div class="closing-names">
+
+                <div class="closing-name">
+                    Irene
+                </div>
+
+                <div class="closing-ampersand">
+                    &amp;
+                </div>
+
+                <div class="closing-name">
+                    Yoel
+                </div>
+
+            </div>
+
 
             <p class="closing-date">
                 31.10.2026
             </p>
 
+
             <div class="gold-line"></div>
+
 
             <p class="closing-message">
                 We are grateful to have you
                 as part of our special day.
             </p>
 
+
         </div>
 
     </section>
 
 
-    <!-- =========================
+    <!-- ==================================================
          BACKGROUND MUSIC
-    ========================== -->
+    =================================================== -->
+
     <audio
         id="backgroundMusic"
         src="assets/music.mp3"
@@ -434,9 +541,10 @@
     ></audio>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    <!-- ==================================================
+         SCRIPT
+    =================================================== -->
+
     <script src="script.js"></script>
 
 </body>
