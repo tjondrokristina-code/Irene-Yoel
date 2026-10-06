@@ -2599,3 +2599,19 @@ body.invitation-unlocked .petals {
             none !important;
     }
 }
+
+
+/* FIX COVER - THE ENGAGEMENT OF */
+.save-date {
+    font-size: clamp(1.25rem, 5vw, 2.6rem);
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 420px) {
+    .save-date {
+        font-size: 1.35rem;
+        letter-spacing: 0.01em;
+        margin-bottom: 14px;
+    }
+}
