@@ -94,7 +94,8 @@ body.invitation-locked .music-toggle {
 ========================================================= */
 
 body.invitation-unlocked {
-    background-color: var(--ivory);
+    background-color:
+        var(--ivory);
 }
 
 
@@ -116,12 +117,12 @@ body.invitation-unlocked {
     justify-content: center;
 
     padding:
-        80px
-        20px;
+        80px 20px;
 
     overflow: hidden;
 
-    background-color: transparent;
+    background-color:
+        transparent;
 }
 
 
@@ -130,7 +131,7 @@ body.invitation-unlocked {
 ========================================================= */
 
 /*
-   Background bergerak bersama halaman ketika scrolling.
+   Background ikut bergerak ketika halaman discroll.
    Tidak menggunakan background-attachment: fixed.
 */
 
@@ -152,7 +153,10 @@ body.invitation-unlocked {
 }
 
 
-/* Posisi background tiap bagian */
+/*
+   Posisi background disesuaikan agar
+   sambungan antar bagian tetap terasa natural.
+*/
 
 .intro {
     background-position:
@@ -180,11 +184,14 @@ body.invitation-unlocked {
 ========================================================= */
 
 .section-content {
-    position: relative;
+    position:
+        relative;
 
-    z-index: 5;
+    z-index:
+        5;
 
-    width: 100%;
+    width:
+        100%;
 
     max-width:
         var(--content-width);
@@ -202,7 +209,8 @@ body.invitation-unlocked {
 ========================================================= */
 
 .cover {
-    position: relative;
+    position:
+        relative;
 
     min-height:
         100vh;
@@ -232,31 +240,18 @@ body.invitation-unlocked {
 ========================================================= */
 
 .cover-overlay {
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 0;
+    inset:
+        0;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(
-                247,
-                243,
-                233,
-                0.03
-            ),
-            rgba(
-                247,
-                243,
-                233,
-                0.06
-            ),
-            rgba(
-                247,
-                243,
-                233,
-                0.12
-            )
+            rgba(247, 243, 233, 0.03),
+            rgba(247, 243, 233, 0.06),
+            rgba(247, 243, 233, 0.12)
         );
 
     pointer-events:
@@ -269,11 +264,14 @@ body.invitation-unlocked {
 ========================================================= */
 
 .cover-content {
-    position: relative;
+    position:
+        relative;
 
-    z-index: 5;
+    z-index:
+        5;
 
-    width: 100%;
+    width:
+        100%;
 
     max-width:
         900px;
@@ -303,7 +301,8 @@ body.invitation-unlocked {
         center;
 
     /*
-       Menurunkan komposisi cover sedikit.
+       Sedikit turun agar lebih pas
+       dengan komposisi background.
     */
 
     transform:
@@ -321,6 +320,11 @@ body.invitation-unlocked {
    11. COVER TITLE
 ========================================================= */
 
+/*
+   THE ENGAGEMENT OF
+   Diperkecil agar tidak memenuhi background.
+*/
+
 .save-date {
     position:
         relative;
@@ -329,7 +333,7 @@ body.invitation-unlocked {
         5;
 
     margin-bottom:
-        20px;
+        18px;
 
     font-family:
         "Bodoni 72",
@@ -340,19 +344,19 @@ body.invitation-unlocked {
 
     font-size:
         clamp(
-            2.3rem,
-            9vw,
-            5.2rem
+            1.7rem,
+            6.5vw,
+            3.7rem
         );
 
     font-weight:
         400;
 
     line-height:
-        0.95;
+        1;
 
     letter-spacing:
-        0.015em;
+        0.025em;
 
     color:
         var(--brown);
@@ -477,8 +481,7 @@ body.invitation-unlocked {
         195px;
 
     padding:
-        14px
-        28px;
+        14px 28px;
 
     border:
         1px solid
@@ -742,7 +745,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   18. ENGAGEMENT OF
+   18. ENGAGEMENT OF — SLIDE 2
 ========================================================= */
 
 .engagement-of {
@@ -757,11 +760,15 @@ body.invitation-unlocked {
         Georgia,
         serif;
 
+    /*
+       Dibuat lebih besar lagi sedikit.
+    */
+
     font-size:
         clamp(
-            1.15rem,
-            5vw,
-            1.65rem
+            1.3rem,
+            5.5vw,
+            1.85rem
         );
 
     font-style:
@@ -938,17 +945,21 @@ body.invitation-unlocked {
 
 .details {
     padding-top:
-        10vh;
+        8vh;
 
     padding-bottom:
         10vh;
 }
 
 
+/* =========================================================
+   22. DETAILS HEADING
+========================================================= */
+
 .details h2,
 .wishes h2 {
     margin-bottom:
-        28px;
+        24px;
 
     font-family:
         "Bodoni 72",
@@ -959,7 +970,7 @@ body.invitation-unlocked {
 
     font-size:
         clamp(
-            2.2rem,
+            2.1rem,
             8vw,
             3.7rem
         );
@@ -982,19 +993,24 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   22. DETAILS PHOTO
+   23. DETAILS PHOTO
 ========================================================= */
+
+/*
+   Foto diperkecil agar informasi acara
+   menjadi fokus utama.
+*/
 
 .details-photo-wrapper {
     width:
         min(
-            78vw,
-            430px
+            58vw,
+            300px
         );
 
     margin:
         0 auto
-        30px;
+        25px;
 }
 
 
@@ -1029,7 +1045,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   23. DETAIL LIST
+   24. DETAIL LIST
 ========================================================= */
 
 .detail-list {
@@ -1037,7 +1053,7 @@ body.invitation-unlocked {
         100%;
 
     max-width:
-        490px;
+        520px;
 
     margin:
         0 auto
@@ -1047,7 +1063,7 @@ body.invitation-unlocked {
 
 .detail-item {
     padding:
-        16px
+        18px
         5px;
 
     border-bottom:
@@ -1079,17 +1095,22 @@ body.invitation-unlocked {
 }
 
 
-/* Date / Venue / Address */
+/* =========================================================
+   25. DETAIL LABEL
+========================================================= */
 
 .detail-label {
     display:
         block;
 
     margin-bottom:
-        7px;
+        8px;
 
     font-size:
-        0.68rem;
+        0.82rem;
+
+    font-weight:
+        500;
 
     letter-spacing:
         0.25em;
@@ -1102,32 +1123,67 @@ body.invitation-unlocked {
 }
 
 
+/* =========================================================
+   26. DETAIL VALUE
+========================================================= */
+
+/*
+   Dibesarkan hampir 2x dari versi sebelumnya.
+   Fokus utama Slide 3.
+*/
+
 .detail-value {
     display:
         block;
 
+    font-family:
+        "Baskerville",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Georgia,
+        serif;
+
     font-size:
-        1rem;
+        clamp(
+            1.45rem,
+            6vw,
+            2rem
+        );
+
+    font-weight:
+        400;
 
     line-height:
-        1.7;
+        1.45;
 
     color:
         var(--brown);
+
+    text-shadow:
+        0 1px 5px
+        rgba(
+            255,
+            252,
+            244,
+            0.25
+        );
 }
 
 
 /* =========================================================
-   24. LOCATION BUTTON
+   27. LOCATION BUTTON
 ========================================================= */
 
 .location-button {
     display:
         inline-block;
 
+    margin-top:
+        3px;
+
     padding:
-        13px
-        25px;
+        14px
+        28px;
 
     border:
         1px solid
@@ -1150,7 +1206,7 @@ body.invitation-unlocked {
         none;
 
     font-size:
-        0.62rem;
+        0.65rem;
 
     letter-spacing:
         0.25em;
@@ -1176,7 +1232,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   25. WISHES
+   28. WISHES
 ========================================================= */
 
 .wishes {
@@ -1242,7 +1298,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   26. WISHES FORM
+   29. WISHES FORM
 ========================================================= */
 
 .invitation-form {
@@ -1256,8 +1312,7 @@ body.invitation-unlocked {
         0 auto;
 
     padding:
-        25px
-        20px;
+        25px 20px;
 
     background:
         rgba(
@@ -1301,7 +1356,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   27. FORM GROUP
+   30. FORM GROUP
 ========================================================= */
 
 .form-group {
@@ -1344,8 +1399,7 @@ body.invitation-unlocked {
         100%;
 
     padding:
-        12px
-        13px;
+        12px 13px;
 
     border:
         1px solid
@@ -1421,7 +1475,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   28. FORM BUTTON
+   31. FORM BUTTON
 ========================================================= */
 
 .form-button {
@@ -1429,8 +1483,7 @@ body.invitation-unlocked {
         100%;
 
     padding:
-        14px
-        20px;
+        14px 20px;
 
     border:
         none;
@@ -1466,7 +1519,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   29. WISH CARDS
+   32. WISH CARDS
 ========================================================= */
 
 .wishes-list {
@@ -1496,8 +1549,7 @@ body.invitation-unlocked {
 
 .wish-card {
     padding:
-        15px
-        16px;
+        15px 16px;
 
     background:
         rgba(
@@ -1544,7 +1596,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   30. CLOSING
+   33. CLOSING
 ========================================================= */
 
 .closing {
@@ -1728,13 +1780,8 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   31. PEONY PETALS
+   34. PEONY PETALS
 ========================================================= */
-
-/*
-   Kelopak peony dibuat langsung dengan CSS.
-   Bukan bunga utuh.
-*/
 
 .petals {
     position:
@@ -1819,7 +1866,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   32. PETAL VARIATIONS
+   35. PETAL VARIATIONS
 ========================================================= */
 
 .petal-1 {
@@ -1988,7 +2035,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   33. ANIMATIONS
+   36. ANIMATIONS
 ========================================================= */
 
 @keyframes coverContentIn {
@@ -2158,7 +2205,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   34. PEONY ANIMATION
+   37. PEONY ANIMATION
 ========================================================= */
 
 @keyframes petalFloat {
@@ -2227,7 +2274,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   35. DESKTOP
+   38. TABLET / DESKTOP
 ========================================================= */
 
 @media (min-width: 768px) {
@@ -2250,9 +2297,9 @@ body.invitation-unlocked .petals {
     .save-date {
         font-size:
             clamp(
-                3.2rem,
-                7vw,
-                5.8rem
+                2.7rem,
+                6vw,
+                4.4rem
             );
     }
 
@@ -2274,7 +2321,7 @@ body.invitation-unlocked .petals {
 
     .engagement-of {
         font-size:
-            1.5rem;
+            1.65rem;
     }
 
 
@@ -2286,11 +2333,23 @@ body.invitation-unlocked .petals {
                 8rem
             );
     }
+
+
+    .details-photo-wrapper {
+        width:
+            280px;
+    }
+
+
+    .detail-value {
+        font-size:
+            1.85rem;
+    }
 }
 
 
 /* =========================================================
-   36. LARGE DESKTOP
+   39. LARGE DESKTOP
 ========================================================= */
 
 @media (min-width: 1200px) {
@@ -2309,22 +2368,20 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   37. SMALL MOBILE
+   40. SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 420px) {
 
     .section {
         padding:
-            55px
-            17px;
+            55px 17px;
     }
 
 
     .cover {
         padding:
-            20px
-            15px;
+            20px 15px;
     }
 
 
@@ -2334,16 +2391,21 @@ body.invitation-unlocked .petals {
     }
 
 
+    /*
+       Cover title lebih kecil agar
+       tidak menabrak elemen background.
+    */
+
     .save-date {
         font-size:
             clamp(
-                2rem,
-                9.5vw,
-                3rem
+                1.65rem,
+                8vw,
+                2.6rem
             );
 
         letter-spacing:
-            0;
+            0.01em;
     }
 
 
@@ -2370,13 +2432,14 @@ body.invitation-unlocked .petals {
             175px;
 
         padding:
-            12px
-            20px;
+            12px 20px;
 
         font-size:
             0.58rem;
     }
 
+
+    /* Slide 2 */
 
     .intro {
         padding-top:
@@ -2392,7 +2455,7 @@ body.invitation-unlocked .petals {
 
     .engagement-of {
         font-size:
-            1.12rem;
+            1.3rem;
 
         letter-spacing:
             0.10em;
@@ -2412,33 +2475,91 @@ body.invitation-unlocked .petals {
     }
 
 
+    /* Slide 3 */
+
+    .details {
+        padding-top:
+            7vh;
+
+        padding-bottom:
+            8vh;
+    }
+
+
+    .details h2 {
+        font-size:
+            2rem;
+
+        margin-bottom:
+            20px;
+    }
+
+
     .details-photo-wrapper {
         width:
             min(
-                85vw,
-                360px
+                48vw,
+                240px
             );
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .detail-item {
+        padding:
+            15px 3px;
     }
 
 
     .detail-label {
         font-size:
-            0.63rem;
+            0.72rem;
+
+        letter-spacing:
+            0.20em;
+
+        margin-bottom:
+            6px;
     }
 
+
+    /*
+       Isi dibuat sangat jelas di layar HP.
+    */
 
     .detail-value {
         font-size:
-            0.94rem;
+            clamp(
+                1.35rem,
+                6.5vw,
+                1.75rem
+            );
+
+        line-height:
+            1.45;
     }
 
+
+    .location-button {
+        padding:
+            13px 23px;
+
+        font-size:
+            0.58rem;
+    }
+
+
+    /* Wishes */
 
     .invitation-form {
         padding:
-            22px
-            17px;
+            22px 17px;
     }
 
+
+    /* Music */
 
     .music-toggle {
         width:
@@ -2457,7 +2578,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   38. REDUCED MOTION
+   41. REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
