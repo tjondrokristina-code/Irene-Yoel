@@ -1,420 +1,649 @@
 /* =========================================================
-   IRENE & YOEL — ENGAGEMENT INVITATION
+   IRENE & YOEL
+   ENGAGEMENT INVITATION
    SCRIPT.JS
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+/* =========================================================
+   01. ELEMENTS
+========================================================= */
 
-    const openInvitationButton =
-        document.getElementById("openInvitationButton");
+const body = document.body;
 
-    const backgroundMusic =
-        document.getElementById("backgroundMusic");
+const openInvitationButton =
+    document.getElementById("openInvitationButton");
 
-    const cover =
-        document.getElementById("cover");
+const backgroundMusic =
+    document.getElementById("backgroundMusic");
 
-    const introSection =
-        document.getElementById("intro");
+const musicToggle =
+    document.getElementById("musicToggle");
 
-    const wishesForm =
-        document.getElementById("wishesForm");
+const rsvpForm =
+    document.getElementById("rsvpForm");
 
-    const wishesList =
-        document.getElementById("wishesList");
+const wishesForm =
+    document.getElementById("wishesForm");
 
-
-    /* =====================================================
-       INITIAL STATE
-    ===================================================== */
-
-    document.body.classList.add("invitation-locked");
+const wishesList =
+    document.getElementById("wishesList");
 
 
-    /* =====================================================
-       OPEN INVITATION
-    ===================================================== */
+/* =========================================================
+   02. MUSIC
+========================================================= */
 
-    if (openInvitationButton) {
-
-        openInvitationButton.addEventListener("click", async () => {
-
-            /* Prevent double click */
-            openInvitationButton.disabled = true;
-
-            openInvitationButton.style.pointerEvents = "none";
+let musicStarted = false;
 
 
-            /* ---------------------------------------------
-               START MUSIC
-            --------------------------------------------- */
+/*
+   Memulai musik.
+   Browser biasanya mengizinkan audio karena fungsi ini
+   dipanggil langsung setelah user menekan tombol.
+*/
 
-            if (backgroundMusic) {
+function startMusic() {
 
-                try {
-
-                    backgroundMusic.volume = 0.45;
-
-                    await backgroundMusic.play();
-
-                } catch (error) {
-
-                    console.log(
-                        "Music could not autoplay:",
-                        error
-                    );
-
-                }
-
-            }
-
-
-            /* ---------------------------------------------
-               COVER EXIT ANIMATION
-            --------------------------------------------- */
-
-            if (cover) {
-                cover.classList.add("cover-exit");
-            }
-
-
-            /* ---------------------------------------------
-               SHOW INVITATION
-            --------------------------------------------- */
-
-            setTimeout(() => {
-
-                document.body.classList.remove(
-                    "invitation-locked"
-                );
-
-                document.body.classList.add(
-                    "invitation-unlocked"
-                );
-
-
-                /* Scroll to first content section */
-
-                setTimeout(() => {
-
-                    if (introSection) {
-
-                        introSection.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }
-
-                }, 100);
-
-            }, 700);
-
-        });
-
+    if (!backgroundMusic) {
+        return;
     }
 
+    backgroundMusic.volume = 0.45;
 
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
+    const playPromise =
+        backgroundMusic.play();
 
-    const sections =
-        document.querySelectorAll(".section:not(#cover)");
+    if (playPromise !== undefined) {
 
+        playPromise
+            .then(() => {
 
-    const revealObserver =
-        new IntersectionObserver(
-            (entries) => {
+                musicStarted = true;
 
-                entries.forEach((entry) => {
+                updateMusicButton();
 
-                    if (entry.isIntersecting) {
+            })
+            .catch(() => {
 
-                        entry.target.classList.add(
-                            "is-visible"
-                        );
+                /*
+                   Kalau browser masih menolak autoplay,
+                   kita tidak memaksa.
+                */
 
-                    }
+                musicStarted = false;
 
-                });
-
-            },
-            {
-                threshold: 0.15
-            }
-        );
-
-
-    sections.forEach((section) => {
-
-        revealObserver.observe(section);
-
-    });
-
-
-    /* =====================================================
-       WISHES — LOCAL STORAGE
-       
-       Untuk sementara wishes disimpan di browser.
-       Nanti kita ganti ke Google Sheets.
-    ===================================================== */
-
-    const WISHES_STORAGE_KEY =
-        "ireneYoelWishes";
-
-
-    function getWishes() {
-
-        try {
-
-            const savedWishes =
-                localStorage.getItem(
-                    WISHES_STORAGE_KEY
-                );
-
-            return savedWishes
-                ? JSON.parse(savedWishes)
-                : [];
-
-        } catch (error) {
-
-            console.error(
-                "Failed to read wishes:",
-                error
-            );
-
-            return [];
-
-        }
-
-    }
-
-
-    function saveWishes(wishes) {
-
-        try {
-
-            localStorage.setItem(
-                WISHES_STORAGE_KEY,
-                JSON.stringify(wishes)
-            );
-
-        } catch (error) {
-
-            console.error(
-                "Failed to save wishes:",
-                error
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       DISPLAY WISHES
-    ===================================================== */
-
-    function displayWishes() {
-
-        if (!wishesList) {
-            return;
-        }
-
-
-        const wishes =
-            getWishes();
-
-
-        wishesList.innerHTML = "";
-
-
-        if (wishes.length === 0) {
-
-            return;
-
-        }
-
-
-        wishes
-            .slice()
-            .reverse()
-            .forEach((wish) => {
-
-                const wishCard =
-                    document.createElement("div");
-
-                wishCard.className =
-                    "wish-card";
-
-
-                const name =
-                    document.createElement("strong");
-
-                name.textContent =
-                    wish.name;
-
-
-                const message =
-                    document.createElement("p");
-
-                message.textContent =
-                    wish.message;
-
-
-                wishCard.appendChild(name);
-                wishCard.appendChild(message);
-
-                wishesList.appendChild(wishCard);
+                updateMusicButton();
 
             });
 
     }
 
-
-    /* =====================================================
-       WISHES FORM
-    ===================================================== */
-
-    if (wishesForm) {
-
-        wishesForm.addEventListener(
-            "submit",
-            (event) => {
-
-                event.preventDefault();
+}
 
 
-                const nameInput =
-                    document.getElementById(
-                        "wishName"
-                    );
+/* =========================================================
+   03. MUSIC BUTTON
+========================================================= */
+
+function updateMusicButton() {
+
+    if (!musicToggle) {
+        return;
+    }
+
+    const icon =
+        musicToggle.querySelector(".music-icon");
+
+    if (!icon) {
+        return;
+    }
 
 
-                const messageInput =
-                    document.getElementById(
-                        "wishMessage"
-                    );
+    if (
+        backgroundMusic &&
+        !backgroundMusic.paused
+    ) {
 
+        icon.textContent = "♫";
 
-                if (!nameInput || !messageInput) {
-                    return;
-                }
+        musicToggle.setAttribute(
+            "aria-pressed",
+            "true"
+        );
 
+        musicToggle.setAttribute(
+            "aria-label",
+            "Pause music"
+        );
 
-                const name =
-                    nameInput.value.trim();
+    } else {
 
+        icon.textContent = "♪";
 
-                const message =
-                    messageInput.value.trim();
+        musicToggle.setAttribute(
+            "aria-pressed",
+            "false"
+        );
 
-
-                if (!name || !message) {
-
-                    return;
-
-                }
-
-
-                const newWish = {
-
-                    name: name,
-
-                    message: message,
-
-                    date:
-                        new Date().toISOString()
-
-                };
-
-
-                const wishes =
-                    getWishes();
-
-
-                wishes.push(newWish);
-
-
-                saveWishes(wishes);
-
-
-                displayWishes();
-
-
-                wishesForm.reset();
-
-
-                /* -----------------------------------------
-                   Small success feedback
-                ----------------------------------------- */
-
-                const button =
-                    wishesForm.querySelector(
-                        "button[type='submit']"
-                    );
-
-
-                if (button) {
-
-                    const originalText =
-                        button.textContent;
-
-
-                    button.textContent =
-                        "WISH SENT ✓";
-
-
-                    setTimeout(() => {
-
-                        button.textContent =
-                            originalText;
-
-                    }, 2200);
-
-                }
-
-            }
+        musicToggle.setAttribute(
+            "aria-label",
+            "Play music"
         );
 
     }
 
-
-    /* =====================================================
-       LOAD EXISTING WISHES
-    ===================================================== */
-
-    displayWishes();
+}
 
 
-    /* =====================================================
-       PAUSE MUSIC WHEN TAB IS HIDDEN
-    ===================================================== */
+/*
+   Tombol musik.
+*/
 
-    document.addEventListener(
-        "visibilitychange",
-        () => {
+if (musicToggle) {
+
+    musicToggle.addEventListener(
+        "click",
+        function () {
 
             if (!backgroundMusic) {
                 return;
             }
 
 
-            if (
-                document.visibilityState ===
-                "hidden"
-            ) {
+            if (backgroundMusic.paused) {
+
+                backgroundMusic.play()
+                    .then(() => {
+
+                        musicStarted = true;
+
+                        updateMusicButton();
+
+                    })
+                    .catch(() => {
+
+                        updateMusicButton();
+
+                    });
+
+            } else {
 
                 backgroundMusic.pause();
+
+                musicStarted = false;
+
+                updateMusicButton();
 
             }
 
         }
     );
 
-});
+}
+
+
+/* =========================================================
+   04. OPEN INVITATION
+========================================================= */
+
+if (openInvitationButton) {
+
+    openInvitationButton.addEventListener(
+        "click",
+        function () {
+
+
+            /*
+               Unlock seluruh invitation.
+            */
+
+            body.classList.remove(
+                "invitation-locked"
+            );
+
+            body.classList.add(
+                "invitation-unlocked"
+            );
+
+
+            /*
+               Musik mulai setelah user menekan
+               Open Invitation.
+            */
+
+            startMusic();
+
+
+            /*
+               Scroll ke slide 2 secara smooth.
+            */
+
+            const intro =
+                document.getElementById("intro");
+
+            if (intro) {
+
+                setTimeout(() => {
+
+                    intro.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }, 150);
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   05. IMPORTANT:
+   MUSIC IS NOT STOPPED WHEN USER LEAVES THE PAGE
+========================================================= */
+
+/*
+   JANGAN menggunakan:
+
+   document.addEventListener(
+       "visibilitychange",
+       ...
+   );
+
+   untuk pause musik.
+
+   Kita sengaja TIDAK membuat handler tersebut.
+
+   Jadi script tidak akan memerintahkan musik berhenti
+   ketika user membuka Google Maps atau berpindah tab.
+
+   Jika browser/HP sendiri menghentikan audio karena
+   kebijakan sistem, itu berada di luar kontrol website.
+*/
+
+
+/* =========================================================
+   06. SCROLL REVEAL
+========================================================= */
+
+const animatedElements =
+    document.querySelectorAll(
+        ".section-content > *, " +
+        ".detail-item, " +
+        ".invitation-form, " +
+        ".wish-card"
+    );
+
+
+/*
+   IntersectionObserver membuat elemen muncul ketika
+   user scroll sampai ke bagian tersebut.
+*/
+
+if (
+    "IntersectionObserver" in window
+) {
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "is-visible"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    animatedElements.forEach(
+        function (element) {
+
+            observer.observe(element);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   07. RSVP
+========================================================= */
+
+/*
+   Untuk sekarang RSVP belum dikirim ke Google Sheets.
+
+   Kita siapkan handler-nya terlebih dahulu.
+
+   Nanti ketika URL Google Apps Script sudah ada,
+   bagian endpoint bisa kita sambungkan.
+*/
+
+if (rsvpForm) {
+
+    rsvpForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "rsvpName"
+                ).value.trim();
+
+
+            const attendance =
+                document.getElementById(
+                    "rsvpAttendance"
+                ).value;
+
+
+            const guests =
+                document.getElementById(
+                    "rsvpGuests"
+                ).value;
+
+
+            if (
+                !name ||
+                !attendance ||
+                !guests
+            ) {
+
+                alert(
+                    "Please complete all RSVP fields."
+                );
+
+                return;
+
+            }
+
+
+            /*
+               TEMPORARY
+
+               Untuk sementara kita tampilkan
+               konfirmasi.
+
+               Nanti diganti dengan fetch()
+               ke Google Apps Script.
+            */
+
+            alert(
+                "Thank you, " +
+                name +
+                "! Your RSVP has been recorded."
+            );
+
+
+            rsvpForm.reset();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   08. WISHES
+========================================================= */
+
+let wishes = [];
+
+
+/*
+   Ambil wishes yang pernah tersimpan di browser.
+
+   Ini hanya penyimpanan sementara sebelum kita
+   sambungkan ke Google Sheets.
+*/
+
+try {
+
+    const savedWishes =
+        localStorage.getItem(
+            "ireneYoelWishes"
+        );
+
+
+    if (savedWishes) {
+
+        wishes =
+            JSON.parse(savedWishes);
+
+    }
+
+} catch (error) {
+
+    wishes = [];
+
+}
+
+
+/* =========================================================
+   09. DISPLAY WISHES
+========================================================= */
+
+function displayWishes() {
+
+    if (!wishesList) {
+        return;
+    }
+
+
+    wishesList.innerHTML = "";
+
+
+    if (wishes.length === 0) {
+        return;
+    }
+
+
+    /*
+       Wishes terbaru ditampilkan paling atas.
+    */
+
+    const reversedWishes =
+        [...wishes].reverse();
+
+
+    reversedWishes.forEach(
+        function (wish) {
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "wish-card";
+
+
+            const name =
+                document.createElement(
+                    "strong"
+                );
+
+
+            name.textContent =
+                wish.name;
+
+
+            const message =
+                document.createElement(
+                    "p"
+                );
+
+
+            message.textContent =
+                wish.message;
+
+
+            card.appendChild(name);
+
+            card.appendChild(message);
+
+            wishesList.appendChild(card);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   10. SUBMIT WISHES
+========================================================= */
+
+if (wishesForm) {
+
+    wishesForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "wishName"
+                ).value.trim();
+
+
+            const message =
+                document.getElementById(
+                    "wishMessage"
+                ).value.trim();
+
+
+            if (
+                !name ||
+                !message
+            ) {
+
+                alert(
+                    "Please write your name and wishes."
+                );
+
+                return;
+
+            }
+
+
+            const newWish = {
+
+                name: name,
+
+                message: message,
+
+                date:
+                    new Date().toISOString()
+
+            };
+
+
+            wishes.push(
+                newWish
+            );
+
+
+            /*
+               Simpan sementara di browser.
+            */
+
+            try {
+
+                localStorage.setItem(
+                    "ireneYoelWishes",
+                    JSON.stringify(wishes)
+                );
+
+            } catch (error) {
+
+                console.log(
+                    "Unable to save wishes locally."
+                );
+
+            }
+
+
+            displayWishes();
+
+
+            wishesForm.reset();
+
+
+            alert(
+                "Thank you for your beautiful wishes!"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   11. INITIALIZE WISHES
+========================================================= */
+
+displayWishes();
+
+
+/* =========================================================
+   12. PREVENT ACCIDENTAL FORM SUBMISSION
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        /*
+           Tidak melakukan apa-apa pada Enter
+           di luar form.
+
+           Ini hanya menjaga pengalaman mobile
+           tetap stabil.
+        */
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            return;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   13. INITIAL MUSIC BUTTON STATE
+========================================================= */
+
+updateMusicButton();
