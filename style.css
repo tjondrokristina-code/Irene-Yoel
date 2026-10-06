@@ -92,31 +92,20 @@ body.invitation-locked .music-toggle {
 
 
 /* =========================================================
-   04. CONTINUOUS BACKGROUND
+   CONTINUOUS BACKGROUND
 ========================================================= */
 
-/*
-   Background utama dibuat berada di body.
-
-   Tujuannya agar antar-slide terasa seperti
-   satu rangkaian artwork, bukan halaman putih
-   yang terpisah.
-*/
-
 body.invitation-unlocked {
-    background:
-        url("assets/background.png")
-        center top / cover
-        fixed
-        no-repeat;
-
     background-color: var(--ivory);
 }
 
 
 /*
-   Semua slide isi transparan.
-   Background body akan terlihat terus.
+   Background menjadi bagian dari setiap section.
+
+   Jadi ketika user scroll:
+   background ikut bergerak bersama halaman,
+   bukan diam sementara tulisan bergerak.
 */
 
 .intro,
@@ -124,7 +113,61 @@ body.invitation-unlocked {
 .rsvp,
 .wishes,
 .closing {
-    background: transparent;
+    background-image:
+        url("assets/background.png");
+
+    background-size:
+        cover;
+
+    background-position:
+        center center;
+
+    background-repeat:
+        no-repeat;
+
+    background-attachment:
+        scroll;
+}
+
+
+/*
+   Tidak ada warna putih di antara slide.
+*/
+
+.section {
+    background-color:
+        transparent;
+}
+
+
+/*
+   Supaya sambungan antar section tidak terlihat
+   seperti halaman putih.
+*/
+
+.intro {
+    background-position:
+        center top;
+}
+
+.details {
+    background-position:
+        center center;
+}
+
+.rsvp {
+    background-position:
+        center center;
+}
+
+.wishes {
+    background-position:
+        center center;
+}
+
+.closing {
+    background-position:
+        center bottom;
 }
 
 
@@ -226,7 +269,6 @@ body.invitation-unlocked {
     z-index: 5;
 
     width: 100%;
-
     max-width: 900px;
 
     min-height: 90vh;
@@ -235,14 +277,15 @@ body.invitation-unlocked {
     margin: 0 auto;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
+
+    /* Turunkan seluruh komposisi cover sedikit */
+    transform: translateY(45px);
 
     animation:
         coverContentIn
@@ -619,33 +662,51 @@ body.invitation-unlocked {
         center;
 
     line-height:
-        0.84;
+        0.8;
+
+    transform:
+        rotate(-2deg);
 }
 
 
 .name {
     font-family:
-        "Bodoni 72",
-        "Didot",
         "Baskerville",
+        "Palatino Linotype",
+        "Book Antiqua",
         Georgia,
         serif;
 
     font-size:
         clamp(
-            4.4rem,
-            18vw,
-            8.3rem
+            4.3rem,
+            17vw,
+            7.8rem
         );
 
     font-weight:
         400;
 
+    font-style:
+        italic;
+
     letter-spacing:
-        -0.045em;
+        -0.055em;
+
+    line-height:
+        0.82;
 
     color:
         var(--brown);
+
+    text-shadow:
+        0 2px 10px
+        rgba(
+            255,
+            252,
+            244,
+            0.22
+        );
 
     animation:
         nameReveal
@@ -669,19 +730,19 @@ body.invitation-unlocked {
 
 .name-ampersand {
     margin:
-        10px 0;
+        12px 0;
 
     font-family:
-        "Bodoni 72",
-        "Didot",
+        "Baskerville",
+        "Palatino Linotype",
         Georgia,
         serif;
 
     font-size:
         clamp(
-            1.5rem,
+            1.4rem,
             5vw,
-            2.4rem
+            2.2rem
         );
 
     font-style:
@@ -1558,27 +1619,45 @@ body.invitation-unlocked .petals {
         absolute;
 
     width:
-        13px;
+        16px;
 
     height:
-        20px;
+        25px;
 
     border-radius:
         80% 20% 80% 20%;
 
     background:
         rgba(
-            222,
-            191,
-            184,
-            0.34
+            218,
+            172,
+            166,
+            0.62
+        );
+
+    border:
+        1px solid
+        rgba(
+            194,
+            145,
+            138,
+            0.25
         );
 
     filter:
-        blur(0.2px);
+        blur(0.15px);
 
     opacity:
-        0.65;
+        0.85;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            126,
+            91,
+            83,
+            0.08
+        );
 
     animation:
         petalFloat
@@ -1608,8 +1687,11 @@ body.invitation-unlocked .petals {
     left: 23%;
     top: -50px;
 
-    width: 9px;
-    height: 15px;
+    width:
+        12px;
+
+    height:
+        19px;
 
     animation-duration:
         22s;
@@ -1623,8 +1705,11 @@ body.invitation-unlocked .petals {
     left: 42%;
     top: -30px;
 
-    width: 11px;
-    height: 17px;
+    width:
+        14px;
+
+    height:
+        22px;
 
     animation-duration:
         20s;
@@ -1638,6 +1723,12 @@ body.invitation-unlocked .petals {
     left: 61%;
     top: -60px;
 
+    width:
+        17px;
+
+    height:
+        26px;
+
     animation-duration:
         24s;
 
@@ -1650,8 +1741,11 @@ body.invitation-unlocked .petals {
     left: 76%;
     top: -45px;
 
-    width: 10px;
-    height: 16px;
+    width:
+        13px;
+
+    height:
+        21px;
 
     animation-duration:
         19s;
@@ -1665,8 +1759,11 @@ body.invitation-unlocked .petals {
     left: 91%;
     top: -30px;
 
-    width: 8px;
-    height: 14px;
+    width:
+        11px;
+
+    height:
+        18px;
 
     animation-duration:
         23s;
@@ -1680,8 +1777,11 @@ body.invitation-unlocked .petals {
     left: 34%;
     top: -80px;
 
-    width: 8px;
-    height: 14px;
+    width:
+        12px;
+
+    height:
+        19px;
 
     animation-duration:
         25s;
@@ -1695,8 +1795,11 @@ body.invitation-unlocked .petals {
     left: 69%;
     top: -70px;
 
-    width: 12px;
-    height: 18px;
+    width:
+        15px;
+
+    height:
+        24px;
 
     animation-duration:
         21s;
