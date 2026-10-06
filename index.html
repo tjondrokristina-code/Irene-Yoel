@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsive untuk HP, tablet, dan desktop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Irene & Yoel — Engagement</title>
+
+    <!-- CSS akan kita buat pada langkah berikutnya -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SLIDE 1 — SAVE THE DATE
+         ===================================================== -->
+
+    <section id="cover" class="section cover">
+
+        <!-- Background utama akan kita masukkan melalui CSS -->
+
+        <div class="cover-content">
+
+            <!-- Judul -->
+            <h1 class="save-date">
+                SAVE THE DATE
+            </h1>
+
+            <!--
+                Foto Irene & Yoel
+
+                File nanti dimasukkan ke:
+                assets/irene-yoel.png
+            -->
+            <div class="couple-photo">
+                <img
+                    src="assets/irene-yoel.png"
+                    alt="Irene & Yoel"
+                >
+            </div>
+
+            <!-- Tombol membuka undangan -->
+            <button id="openInvitation" class="open-button">
+                OPEN INVITATION
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 2 — INTRODUCTION
+         ===================================================== -->
+
+    <section id="intro" class="section intro">
+
+        <div class="intro-content">
+
+            <!-- Logo China -->
+            <img
+                src="assets/logo-china.png"
+                alt="Chinese Logo"
+                class="china-logo"
+            >
+
+            <!-- Nama pasangan -->
+            <h2 class="couple-name">
+                Irene &amp; Yoel
+            </h2>
+
+            <p class="event-title">
+                Engagement Party
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 3 — ENGAGEMENT DETAILS
+         ===================================================== -->
+
+    <section id="details" class="section details">
+
+        <div class="details-content">
+
+            <h2>
+                Engagement Party
+            </h2>
+
+            <p class="event-date">
+                31 October 2026
+            </p>
+
+            <p class="event-time">
+                11.30 AM
+            </p>
+
+            <p class="venue">
+                Arunaya Resto
+            </p>
+
+            <p class="address">
+                Jl. Bengawan No. 5–7,<br>
+                Darmo, Kec. Wonokromo,<br>
+                Surabaya
+            </p>
+
+            <!-- Google Maps -->
+            <a
+                href="https://maps.app.goo.gl/YjTPBLxTYJHgsgr9A"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="location-button"
+            >
+                VIEW LOCATION
+            </a>
+
+            <!-- Foto Irene & Yoel -->
+            <div class="details-photo">
+                <img
+                    src="assets/irene-yoel.png"
+                    alt="Irene & Yoel"
+                >
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 4 — RSVP
+         ===================================================== -->
+
+    <section id="rsvp" class="section rsvp">
+
+        <div class="rsvp-content">
+
+            <h2>
+                RSVP
+            </h2>
+
+            <p>
+                We would be delighted to celebrate
+                this special moment with you.
+            </p>
+
+            <!-- Form akan kita hubungkan ke Google Sheets nanti -->
+            <form id="rsvpForm">
+
+                <label for="name">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                >
+
+
+                <label for="attendance">
+                    Will you attend?
+                </label>
+
+                <select
+                    id="attendance"
+                    name="attendance"
+                    required
+                >
+                    <option value="">
+                        Please select
+                    </option>
+
+                    <option value="Yes">
+                        Yes, I'll be there
+                    </option>
+
+                    <option value="No">
+                        Sorry, I can't attend
+                    </option>
+                </select>
+
+
+                <label for="guests">
+                    Number of guests
+                </label>
+
+                <select
+                    id="guests"
+                    name="guests"
+                >
+                    <option value="1">
+                        1
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+                </select>
+
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write a message for Irene & Yoel..."
+                    rows="5"
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    SEND RSVP
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 5 — WISHES
+         ===================================================== -->
+
+    <section id="wishes" class="section wishes">
+
+        <div class="wishes-content">
+
+            <h2>
+                Wishes for Irene &amp; Yoel
+            </h2>
+
+            <p>
+                Leave a little message for the happy couple.
+            </p>
+
+            <!--
+                Nanti pesan dari tamu akan
+                ditampilkan di sini.
+            -->
+
+            <div id="wishesList">
+
+                <!-- Wishes akan muncul melalui JavaScript -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SLIDE 6 — CLOSING
+         ===================================================== -->
+
+    <section id="closing" class="section closing">
+
+        <div class="closing-content">
+
+            <h2>
+                Irene &amp; Yoel
+            </h2>
+
+            <p>
+                31.10.2026
+            </p>
+
+            <p class="closing-message">
+                A beautiful beginning to a lifetime together.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BACKGROUND MUSIC
+         ===================================================== -->
+
+    <audio
+        id="backgroundMusic"
+        src="assets/music.mp3"
+        loop
+        preload="auto"
+    ></audio>
+
+
+    <!-- JavaScript akan kita buat setelah HTML selesai -->
+    <script src="script.js"></script>
+
+</body>
+</html>
