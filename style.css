@@ -1,7 +1,7 @@
 /* =========================================================
    IRENE & YOEL
    ENGAGEMENT INVITATION
-   STYLE.CSS — FINAL BASE
+   STYLE.CSS
 ========================================================= */
 
 
@@ -52,7 +52,8 @@ body {
         "Times New Roman",
         serif;
 
-    background: var(--ivory);
+    background:
+        var(--ivory);
 
     overflow-x: hidden;
 }
@@ -82,9 +83,6 @@ body.invitation-locked .section:not(#cover) {
     display: none !important;
 }
 
-
-/* Music button hidden before opening */
-
 body.invitation-locked .music-toggle {
     opacity: 0;
     pointer-events: none;
@@ -92,82 +90,11 @@ body.invitation-locked .music-toggle {
 
 
 /* =========================================================
-   CONTINUOUS BACKGROUND
+   04. BODY BACKGROUND
 ========================================================= */
 
 body.invitation-unlocked {
     background-color: var(--ivory);
-}
-
-
-/*
-   Background menjadi bagian dari setiap section.
-
-   Jadi ketika user scroll:
-   background ikut bergerak bersama halaman,
-   bukan diam sementara tulisan bergerak.
-*/
-
-.intro,
-.details,
-.rsvp,
-.wishes,
-.closing {
-    background-image:
-        url("assets/background.png");
-
-    background-size:
-        cover;
-
-    background-position:
-        center center;
-
-    background-repeat:
-        no-repeat;
-
-    background-attachment:
-        scroll;
-}
-
-
-/*
-   Tidak ada warna putih di antara slide.
-*/
-
-.section {
-    background-color:
-        transparent;
-}
-
-
-/*
-   Supaya sambungan antar section tidak terlihat
-   seperti halaman putih.
-*/
-
-.intro {
-    background-position:
-        center top;
-}
-
-.details {
-    background-position:
-        center center;
-}
-
-.rsvp {
-    background-position:
-        center center;
-}
-
-.wishes {
-    background-position:
-        center center;
-}
-
-.closing {
-    background-position:
-        center bottom;
 }
 
 
@@ -193,11 +120,63 @@ body.invitation-unlocked {
         20px;
 
     overflow: hidden;
+
+    background-color: transparent;
 }
 
 
 /* =========================================================
-   06. CONTENT
+   06. CONTINUOUS BACKGROUND
+========================================================= */
+
+/*
+   Background bergerak bersama halaman ketika scrolling.
+   Tidak menggunakan background-attachment: fixed.
+*/
+
+.intro,
+.details,
+.wishes,
+.closing {
+    background-image:
+        url("assets/background.png");
+
+    background-size:
+        cover;
+
+    background-repeat:
+        no-repeat;
+
+    background-attachment:
+        scroll;
+}
+
+
+/* Posisi background tiap bagian */
+
+.intro {
+    background-position:
+        center top;
+}
+
+.details {
+    background-position:
+        center center;
+}
+
+.wishes {
+    background-position:
+        center center;
+}
+
+.closing {
+    background-position:
+        center bottom;
+}
+
+
+/* =========================================================
+   07. SECTION CONTENT
 ========================================================= */
 
 .section-content {
@@ -206,41 +185,51 @@ body.invitation-unlocked {
     z-index: 5;
 
     width: 100%;
-    max-width: var(--content-width);
 
-    margin: 0 auto;
+    max-width:
+        var(--content-width);
 
-    text-align: center;
+    margin:
+        0 auto;
+
+    text-align:
+        center;
 }
 
 
 /* =========================================================
-   07. COVER
+   08. COVER
 ========================================================= */
 
 .cover {
     position: relative;
 
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height:
+        100vh;
+
+    min-height:
+        100svh;
 
     padding:
-        25px
         20px;
 
     background-image:
         url("assets/cover-bg.png");
 
-    background-size: cover;
+    background-size:
+        cover;
 
     background-position:
         center center;
 
-    background-repeat: no-repeat;
+    background-repeat:
+        no-repeat;
 }
 
 
-/* Cover overlay */
+/* =========================================================
+   09. COVER OVERLAY
+========================================================= */
 
 .cover-overlay {
     position: absolute;
@@ -250,17 +239,33 @@ body.invitation-unlocked {
     background:
         linear-gradient(
             to bottom,
-            rgba(247, 243, 233, 0.04),
-            rgba(247, 243, 233, 0.06),
-            rgba(247, 243, 233, 0.12)
+            rgba(
+                247,
+                243,
+                233,
+                0.03
+            ),
+            rgba(
+                247,
+                243,
+                233,
+                0.06
+            ),
+            rgba(
+                247,
+                243,
+                233,
+                0.12
+            )
         );
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 
 /* =========================================================
-   08. COVER CONTENT
+   10. COVER CONTENT
 ========================================================= */
 
 .cover-content {
@@ -269,23 +274,40 @@ body.invitation-unlocked {
     z-index: 5;
 
     width: 100%;
-    max-width: 900px;
 
-    min-height: 90vh;
-    min-height: 90svh;
+    max-width:
+        900px;
 
-    margin: 0 auto;
+    min-height:
+        90vh;
 
-    display: flex;
-    flex-direction: column;
+    min-height:
+        90svh;
 
-    align-items: center;
-    justify-content: center;
+    margin:
+        0 auto;
 
-    text-align: center;
+    display:
+        flex;
 
-    /* Turunkan seluruh komposisi cover sedikit */
-    transform: translateY(45px);
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    /*
+       Menurunkan komposisi cover sedikit.
+    */
+
+    transform:
+        translateY(45px);
 
     animation:
         coverContentIn
@@ -296,43 +318,56 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   09. SAVE THE DATE
+   11. COVER TITLE
 ========================================================= */
 
 .save-date {
-    position: relative;
+    position:
+        relative;
 
-    z-index: 5;
+    z-index:
+        5;
 
-    margin-bottom: 20px;
+    margin-bottom:
+        20px;
 
     font-family:
         "Bodoni 72",
         "Didot",
+        "Baskerville",
         Georgia,
         serif;
 
     font-size:
         clamp(
             2.3rem,
-            10vw,
-            5.4rem
+            9vw,
+            5.2rem
         );
 
-    font-weight: 400;
+    font-weight:
+        400;
 
-    line-height: 0.95;
+    line-height:
+        0.95;
 
     letter-spacing:
-        0.02em;
+        0.015em;
 
-    color: var(--brown);
+    color:
+        var(--brown);
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
     text-shadow:
         0 2px 12px
-        rgba(255, 252, 244, 0.35);
+        rgba(
+            255,
+            252,
+            244,
+            0.35
+        );
 
     animation:
         textReveal
@@ -344,28 +379,28 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   10. COVER PHOTO
+   12. COVER PHOTO
 ========================================================= */
 
 .cover-couple-wrapper {
-    width: min(
-        62vw,
-        360px
-    );
+    width:
+        min(
+            62vw,
+            360px
+        );
 
     margin:
         0 auto
         10px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    /*
-       Foto tidak dibuat terlalu dominan.
-       Background tetap menjadi focal point.
-    */
+    justify-content:
+        center;
 
     transform:
         translateY(8px);
@@ -373,16 +408,24 @@ body.invitation-unlocked {
 
 
 .couple-photo {
-    width: 100%;
+    width:
+        100%;
 
-    height: auto;
+    height:
+        auto;
 
-    object-fit: contain;
+    object-fit:
+        contain;
 
     filter:
         drop-shadow(
             0 14px 20px
-            rgba(65, 54, 45, 0.14)
+            rgba(
+                65,
+                54,
+                45,
+                0.14
+            )
         );
 
     animation:
@@ -395,7 +438,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   11. COVER DATE
+   13. COVER DATE
 ========================================================= */
 
 .cover-date {
@@ -404,7 +447,8 @@ body.invitation-unlocked {
         0
         26px;
 
-    font-size: 0.78rem;
+    font-size:
+        0.78rem;
 
     letter-spacing:
         0.32em;
@@ -422,13 +466,15 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   12. OPEN INVITATION
+   14. OPEN INVITATION
 ========================================================= */
 
 .open-button {
-    position: relative;
+    position:
+        relative;
 
-    min-width: 195px;
+    min-width:
+        195px;
 
     padding:
         14px
@@ -436,7 +482,12 @@ body.invitation-unlocked {
 
     border:
         1px solid
-        rgba(154, 124, 70, 0.65);
+        rgba(
+            154,
+            124,
+            70,
+            0.65
+        );
 
     background:
         rgba(
@@ -449,7 +500,8 @@ body.invitation-unlocked {
     color:
         var(--brown);
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     font-size:
         0.65rem;
@@ -481,17 +533,26 @@ body.invitation-unlocked {
 
 
 .open-button::before {
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    inset: 4px;
+    inset:
+        4px;
 
     border:
         1px solid
-        rgba(197, 166, 108, 0.32);
+        rgba(
+            197,
+            166,
+            108,
+            0.32
+        );
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 
@@ -509,7 +570,12 @@ body.invitation-unlocked {
 
     box-shadow:
         0 12px 25px
-        rgba(67, 55, 45, 0.12);
+        rgba(
+            67,
+            55,
+            45,
+            0.12
+        );
 }
 
 
@@ -520,30 +586,48 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   13. MUSIC BUTTON
+   15. MUSIC BUTTON
 ========================================================= */
 
 .music-toggle {
-    position: fixed;
+    position:
+        fixed;
 
-    z-index: 100;
+    z-index:
+        100;
 
-    right: 18px;
-    bottom: 18px;
+    right:
+        18px;
 
-    width: 44px;
-    height: 44px;
+    bottom:
+        18px;
 
-    display: flex;
+    width:
+        44px;
 
-    align-items: center;
-    justify-content: center;
+    height:
+        44px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border:
         1px solid
-        rgba(117, 96, 62, 0.55);
+        rgba(
+            117,
+            96,
+            62,
+            0.55
+        );
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
         rgba(
@@ -556,7 +640,8 @@ body.invitation-unlocked {
     color:
         var(--brown);
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     backdrop-filter:
         blur(7px);
@@ -566,7 +651,12 @@ body.invitation-unlocked {
 
     box-shadow:
         0 7px 20px
-        rgba(55, 45, 37, 0.12);
+        rgba(
+            55,
+            45,
+            37,
+            0.12
+        );
 
     transition:
         transform 0.3s ease,
@@ -590,14 +680,16 @@ body.invitation-unlocked {
 
 
 .music-icon {
-    font-size: 17px;
+    font-size:
+        17px;
 
-    line-height: 1;
+    line-height:
+        1;
 }
 
 
 /* =========================================================
-   14. SLIDE 2 — INTRO
+   16. SLIDE 2 — INTRO
 ========================================================= */
 
 .intro {
@@ -605,7 +697,7 @@ body.invitation-unlocked {
         flex-start;
 
     padding-top:
-        11vh;
+        9vh;
 
     padding-bottom:
         11vh;
@@ -613,14 +705,14 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   15. CHINA LOGO
+   17. CHINA LOGO
 ========================================================= */
 
 .intro-logo {
     width:
         min(
-            190px,
-            42vw
+            200px,
+            45vw
         );
 
     margin:
@@ -628,12 +720,17 @@ body.invitation-unlocked {
         25px;
 
     transform:
-        translateY(-10px);
+        translateY(-12px);
 
     filter:
         drop-shadow(
             0 8px 15px
-            rgba(61, 50, 42, 0.12)
+            rgba(
+                61,
+                50,
+                42,
+                0.12
+            )
         );
 
     animation:
@@ -645,7 +742,51 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   16. NAMES
+   18. ENGAGEMENT OF
+========================================================= */
+
+.engagement-of {
+    margin:
+        0 auto
+        28px;
+
+    font-family:
+        "Baskerville",
+        "Palatino Linotype",
+        "Book Antiqua",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            1.15rem,
+            5vw,
+            1.65rem
+        );
+
+    font-style:
+        italic;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0.13em;
+
+    color:
+        var(--brown);
+
+    animation:
+        textReveal
+        1s
+        ease
+        0.2s
+        both;
+}
+
+
+/* =========================================================
+   19. NAMES
 ========================================================= */
 
 .names {
@@ -761,7 +902,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   17. GOLD LINE
+   20. GOLD LINE
 ========================================================= */
 
 .gold-line {
@@ -792,7 +933,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   18. DETAILS
+   21. SLIDE 3 — DETAILS
 ========================================================= */
 
 .details {
@@ -805,7 +946,6 @@ body.invitation-unlocked {
 
 
 .details h2,
-.rsvp h2,
 .wishes h2 {
     margin-bottom:
         28px;
@@ -842,7 +982,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   19. DETAILS PHOTO
+   22. DETAILS PHOTO
 ========================================================= */
 
 .details-photo-wrapper {
@@ -871,7 +1011,12 @@ body.invitation-unlocked {
     filter:
         drop-shadow(
             0 14px 22px
-            rgba(60, 49, 41, 0.14)
+            rgba(
+                60,
+                49,
+                41,
+                0.14
+            )
         );
 
     animation:
@@ -884,7 +1029,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   20. DETAIL LIST
+   23. DETAIL LIST
 ========================================================= */
 
 .detail-list {
@@ -902,7 +1047,7 @@ body.invitation-unlocked {
 
 .detail-item {
     padding:
-        15px
+        16px
         5px;
 
     border-bottom:
@@ -934,18 +1079,20 @@ body.invitation-unlocked {
 }
 
 
+/* Date / Venue / Address */
+
 .detail-label {
     display:
         block;
 
     margin-bottom:
-        6px;
+        7px;
 
     font-size:
-        0.58rem;
+        0.68rem;
 
     letter-spacing:
-        0.28em;
+        0.25em;
 
     color:
         #829d99;
@@ -960,10 +1107,10 @@ body.invitation-unlocked {
         block;
 
     font-size:
-        0.88rem;
+        1rem;
 
     line-height:
-        1.65;
+        1.7;
 
     color:
         var(--brown);
@@ -971,7 +1118,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   21. LOCATION
+   24. LOCATION BUTTON
 ========================================================= */
 
 .location-button {
@@ -1029,10 +1176,9 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   22. RSVP / WISHES
+   25. WISHES
 ========================================================= */
 
-.rsvp,
 .wishes {
     padding-top:
         10vh;
@@ -1096,7 +1242,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   23. FORM
+   26. WISHES FORM
 ========================================================= */
 
 .invitation-form {
@@ -1155,7 +1301,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   24. FORM GROUP
+   27. FORM GROUP
 ========================================================= */
 
 .form-group {
@@ -1275,7 +1421,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   25. FORM BUTTON
+   28. FORM BUTTON
 ========================================================= */
 
 .form-button {
@@ -1320,7 +1466,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   26. WISHES
+   29. WISH CARDS
 ========================================================= */
 
 .wishes-list {
@@ -1398,7 +1544,7 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   27. CLOSING
+   30. CLOSING
 ========================================================= */
 
 .closing {
@@ -1416,8 +1562,8 @@ body.invitation-unlocked {
 .closing-logo {
     width:
         min(
-            200px,
-            45vw
+            210px,
+            47vw
         );
 
     margin:
@@ -1425,12 +1571,17 @@ body.invitation-unlocked {
         22px;
 
     transform:
-        translateY(-10px);
+        translateY(-12px);
 
     filter:
         drop-shadow(
             0 8px 15px
-            rgba(61, 50, 42, 0.12)
+            rgba(
+                61,
+                50,
+                42,
+                0.12
+            )
         );
 
     animation:
@@ -1471,9 +1622,9 @@ body.invitation-unlocked {
 
 .closing-name {
     font-family:
-        "Bodoni 72",
-        "Didot",
         "Baskerville",
+        "Palatino Linotype",
+        "Book Antiqua",
         Georgia,
         serif;
 
@@ -1486,6 +1637,9 @@ body.invitation-unlocked {
 
     font-weight:
         400;
+
+    font-style:
+        italic;
 
     letter-spacing:
         -0.04em;
@@ -1503,8 +1657,8 @@ body.invitation-unlocked {
         10px 0;
 
     font-family:
-        "Bodoni 72",
-        "Didot",
+        "Baskerville",
+        "Palatino Linotype",
         Georgia,
         serif;
 
@@ -1574,14 +1728,12 @@ body.invitation-unlocked {
 
 
 /* =========================================================
-   28. PEONY PETALS
+   31. PEONY PETALS
 ========================================================= */
 
 /*
-   Ini BUKAN bunga peony utuh.
-
-   Ini hanya kelopak kecil yang dibuat dengan CSS,
-   sehingga tidak membutuhkan file gambar tambahan.
+   Kelopak peony dibuat langsung dengan CSS.
+   Bukan bunga utuh.
 */
 
 .petals {
@@ -1666,11 +1818,16 @@ body.invitation-unlocked .petals {
 }
 
 
-/* Posisi dan variasi kelopak */
+/* =========================================================
+   32. PETAL VARIATIONS
+========================================================= */
 
 .petal-1 {
-    left: 8%;
-    top: -40px;
+    left:
+        8%;
+
+    top:
+        -40px;
 
     animation-duration:
         18s;
@@ -1684,8 +1841,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-2 {
-    left: 23%;
-    top: -50px;
+    left:
+        23%;
+
+    top:
+        -50px;
 
     width:
         12px;
@@ -1702,8 +1862,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-3 {
-    left: 42%;
-    top: -30px;
+    left:
+        42%;
+
+    top:
+        -30px;
 
     width:
         14px;
@@ -1720,8 +1883,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-4 {
-    left: 61%;
-    top: -60px;
+    left:
+        61%;
+
+    top:
+        -60px;
 
     width:
         17px;
@@ -1738,8 +1904,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-5 {
-    left: 76%;
-    top: -45px;
+    left:
+        76%;
+
+    top:
+        -45px;
 
     width:
         13px;
@@ -1756,8 +1925,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-6 {
-    left: 91%;
-    top: -30px;
+    left:
+        91%;
+
+    top:
+        -30px;
 
     width:
         11px;
@@ -1774,8 +1946,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-7 {
-    left: 34%;
-    top: -80px;
+    left:
+        34%;
+
+    top:
+        -80px;
 
     width:
         12px;
@@ -1792,8 +1967,11 @@ body.invitation-unlocked .petals {
 
 
 .petal-8 {
-    left: 69%;
-    top: -70px;
+    left:
+        69%;
+
+    top:
+        -70px;
 
     width:
         15px;
@@ -1810,7 +1988,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   29. ANIMATIONS
+   33. ANIMATIONS
 ========================================================= */
 
 @keyframes coverContentIn {
@@ -1820,7 +1998,7 @@ body.invitation-unlocked .petals {
             0;
 
         transform:
-            translateY(18px);
+            translateY(65px);
     }
 
     to {
@@ -1828,7 +2006,7 @@ body.invitation-unlocked .petals {
             1;
 
         transform:
-            translateY(0);
+            translateY(45px);
     }
 }
 
@@ -1882,7 +2060,7 @@ body.invitation-unlocked .petals {
             0;
 
         transform:
-            translateY(-22px)
+            translateY(-25px)
             scale(0.92);
     }
 
@@ -1891,7 +2069,7 @@ body.invitation-unlocked .petals {
             1;
 
         transform:
-            translateY(-10px)
+            translateY(-12px)
             scale(1);
     }
 }
@@ -1979,6 +2157,10 @@ body.invitation-unlocked .petals {
 }
 
 
+/* =========================================================
+   34. PEONY ANIMATION
+========================================================= */
+
 @keyframes petalFloat {
 
     0% {
@@ -1996,7 +2178,7 @@ body.invitation-unlocked .petals {
 
     10% {
         opacity:
-            0.55;
+            0.85;
     }
 
     30% {
@@ -2045,7 +2227,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   30. DESKTOP
+   35. DESKTOP
 ========================================================= */
 
 @media (min-width: 768px) {
@@ -2058,10 +2240,12 @@ body.invitation-unlocked .petals {
             50px;
     }
 
+
     .cover-couple-wrapper {
         width:
             330px;
     }
+
 
     .save-date {
         font-size:
@@ -2072,18 +2256,27 @@ body.invitation-unlocked .petals {
             );
     }
 
+
     .intro {
         padding-top:
-            9vh;
+            8vh;
     }
+
 
     .intro-logo {
         width:
-            210px;
+            215px;
 
         margin-bottom:
-            30px;
+            28px;
     }
+
+
+    .engagement-of {
+        font-size:
+            1.5rem;
+    }
+
 
     .name {
         font-size:
@@ -2097,7 +2290,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   31. LARGE DESKTOP
+   36. LARGE DESKTOP
 ========================================================= */
 
 @media (min-width: 1200px) {
@@ -2107,6 +2300,7 @@ body.invitation-unlocked .petals {
             350px;
     }
 
+
     .section-content {
         max-width:
             650px;
@@ -2115,7 +2309,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   32. SMALL MOBILE
+   37. SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 420px) {
@@ -2126,28 +2320,32 @@ body.invitation-unlocked .petals {
             17px;
     }
 
+
     .cover {
         padding:
             20px
             15px;
     }
 
+
     .cover-content {
         min-height:
             92vh;
     }
 
+
     .save-date {
         font-size:
             clamp(
-                2.1rem,
-                10vw,
+                2rem,
+                9.5vw,
                 3rem
             );
 
         letter-spacing:
-            0.01em;
+            0;
     }
+
 
     .cover-couple-wrapper {
         width:
@@ -2157,6 +2355,7 @@ body.invitation-unlocked .petals {
             );
     }
 
+
     .cover-date {
         font-size:
             0.68rem;
@@ -2164,6 +2363,7 @@ body.invitation-unlocked .petals {
         letter-spacing:
             0.25em;
     }
+
 
     .open-button {
         min-width:
@@ -2177,15 +2377,30 @@ body.invitation-unlocked .petals {
             0.58rem;
     }
 
+
     .intro {
         padding-top:
-            8vh;
+            7vh;
     }
+
 
     .intro-logo {
         width:
-            165px;
+            175px;
     }
+
+
+    .engagement-of {
+        font-size:
+            1.12rem;
+
+        letter-spacing:
+            0.10em;
+
+        margin-bottom:
+            24px;
+    }
+
 
     .name {
         font-size:
@@ -2196,6 +2411,7 @@ body.invitation-unlocked .petals {
             );
     }
 
+
     .details-photo-wrapper {
         width:
             min(
@@ -2204,11 +2420,25 @@ body.invitation-unlocked .petals {
             );
     }
 
+
+    .detail-label {
+        font-size:
+            0.63rem;
+    }
+
+
+    .detail-value {
+        font-size:
+            0.94rem;
+    }
+
+
     .invitation-form {
         padding:
             22px
             17px;
     }
+
 
     .music-toggle {
         width:
@@ -2227,7 +2457,7 @@ body.invitation-unlocked .petals {
 
 
 /* =========================================================
-   33. REDUCED MOTION
+   38. REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2236,6 +2466,7 @@ body.invitation-unlocked .petals {
         scroll-behavior:
             auto;
     }
+
 
     *,
     *::before,
@@ -2246,47 +2477,4 @@ body.invitation-unlocked .petals {
         transition:
             none !important;
     }
-}
-
-
-/* =========================================================
-   ENGAGEMENT OF — SLIDE 2
-========================================================= */
-
-.engagement-of {
-    margin:
-        0 auto 24px;
-
-    font-family:
-        "Baskerville",
-        "Palatino Linotype",
-        "Book Antiqua",
-        Georgia,
-        serif;
-
-    font-size:
-        clamp(
-            0.9rem,
-            3.5vw,
-            1.2rem
-        );
-
-    font-style:
-        italic;
-
-    font-weight:
-        400;
-
-    letter-spacing:
-        0.14em;
-
-    color:
-        var(--brown-light);
-
-    animation:
-        textReveal
-        1s
-        ease
-        0.2s
-        both;
 }
